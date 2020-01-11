@@ -1,0 +1,212 @@
+[
+    {
+        "value" : 5,
+        "initial" : 1,
+        "output" : {"type" : "timber", "qty" : 1}
+    },
+    {
+        "value" : 7,
+        "initial" : 2,
+        "output" : {"type" : "iron ore", "qty" : 1}
+    },
+    {
+        "value" : 9,
+        "initial" : 3,
+        "output" : {"type" : "bauxite", "qty" : 1}
+    },
+    {
+        "value" : 19,
+        "initial" : 4,
+        "output" : {"type" : "lumber", "qty" : 1},
+        "inputs" : [{"type" : "timber", "qty" : 1}]
+    },
+    {
+        "value" : 21,
+        "initial" : 5,
+        "output" : {"type" : "steel", "qty" : 1},
+        "inputs" : [{"type" : "iron ore", "qty" : 1}]
+    },
+    {
+        "value" : 26,
+        "initial" : 6,
+        "output" : {"type" : "aluminum", "qty" : 1},
+        "inputs" : [{"type" : "bauxite", "qty" : 1}]
+    },
+    {
+        "value" : 11,
+        "initial" : 7,
+        "output" : {"type" : "oil", "qty" : 1}
+    },
+    {
+        "value" : 28,
+        "initial" : 8,
+        "output" : {"type" : "plastic", "qty" : 2},
+        "inputs" : [{"type" : "oil", "qty" : 1}]
+    },
+    {
+        "value" : 8,
+        "output" : {"type" : "energy", "qty" : 2},
+        "inputs" : [{"type" : "oil", "qty" : 1}]
+    },
+    {
+        "value" : 10,
+        "output" : {"type" : "timber", "qty" : 2}
+    },
+    {
+        "value" : 15,
+        "output" : {"type" : "iron ore", "qty" : 2}
+    },
+    {
+        "value" : 16,
+        "output" : {"type" : "energy", "qty" : 3},
+        "inputs" : [{"type" : "oil", "qty" : 1}]
+    },
+    {
+        "value" : 17,
+        "output" : {"type" : "bauxite", "qty" : 2}
+    },
+    {
+        "value" : 18,
+        "output" : {"type" : "oil", "qty" : 2}
+    },
+    {
+        "value" : 20,
+        "output" : {"type" : "timber", "qty" : 3}
+    },
+    {
+        "value" : 23,
+        "output" : {"type" : "iron ore", "qty" : 3}
+    },
+    {
+        "value" : 29,
+        "output" : {"type" : "oil", "qty" : 3}
+    },
+    {
+        "value" : 32,
+        "output" : {"type" : "bauxite", "qty" : 3}
+    },
+    {
+        "value" : 35,
+        "inputs" : [{"type" : "oil", "qty" : 2}],
+        "output" : {"type" : "energy", "qty" : 8}
+    },
+    {
+        "value" : 39,
+        "output" : {"type" : "lumber", "qty" : 2},
+        "inputs" : [{"type" : "timber", "qty" : 2}]
+    },
+    {
+        "value" : 41,
+        "output" : {"type" : "energy", "qty" : 4}
+    },
+    {
+        "value" : 44,
+        "output" : {"type" : "lumber", "qty" : 5},
+        "inputs" : [{"type" : "timber", "qty" : 3}]
+    },
+    {
+        "value" : 45,
+        "output" : {"type" : "steel", "qty" : 2},
+        "inputs" : [{"type" : "iron ore", "qty" : 2}]
+    },
+    {
+        "value" : 55,
+        "output" : {"type" : "aluminum", "qty" : 2},
+        "inputs" : [{"type" : "bauxite", "qty" : 2}]
+    },
+    {
+        "value" : 65,
+        "output" : {"type" : "plastic", "qty" : 5},
+        "inputs" : [{"type" : "oil", "qty" : 3}]
+    },
+    {
+        "value" : 77,
+        "output" : {"type" : "steel", "qty" : 5},
+        "inputs" : [{"type" : "iron ore", "qty" : 3}]
+    },
+    {
+        "value" : 96,
+        "output" : {"type" : "aluminum", "qty" : 5},
+        "inputs" : [{"type" : "bauxite", "qty" : 3}]
+    },
+    {
+        "value" : 30,
+        "output" : {"type" : "goods", "qty" : 1},
+        "inputs" : [{"type" : "lumber", "qty" : 1},{"type" : "energy", "qty" : 1}]
+    },
+    {
+        "value" : 38,
+        "output" : {"type" : "goods", "qty" : 2},
+        "inputs" : [{"type" : "aluminum", "qty" : 1},{"type" : "steel", "qty" : 1},{"type" : "energy", "qty" : 1}]
+    },
+    {
+        "value" : 40,
+        "output" : {"type" : "goods", "qty" : 2},
+        "inputs" : [{"type" : "lumber", "qty" : 1},{"type" : "steel", "qty" : 1},{"type" : "energy", "qty" : 1}]
+    },
+    {
+        "value" : 42,
+        "output" : {"type" : "goods", "qty" : 2},
+        "inputs" : [{"type" : "steel", "qty" : 1},{"type" : "energy", "qty" : 2}]
+    },
+    {
+        "value" : 48,
+        "output" : {"type" : "goods", "qty" : 3},
+        "inputs" : [{"type" : "plastic", "qty" : 1},{"type" : "aluminum", "qty" : 1},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 50,
+        "output" : {"type" : "goods", "qty" : 3},
+        "inputs" : [{"type" : "aluminum", "qty" : 1},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 51,
+        "output" : {"type" : "goods", "qty" : 2},
+        "inputs" : [[{"type" : "plastic", "qty" : 1},{"type" : "aluminum", "qty" : 1},{"type" : "lumber", "qty" : 1},{"type" : "steel", "qty" : 1}],{"type" : "energy", "qty" : 1}]
+    },
+    {
+        "value" : 83,
+        "output" : {"type" : "goods", "qty" : 4},
+        "inputs" : [{"type" : "plastic", "qty" : 2},{"type" : "energy", "qty" : 1}]
+    },
+    {
+        "value" : 99,
+        "output" : {"type" : "goods", "qty" : 6},
+        "inputs" : [{"type" : "aluminum", "qty" : 4},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 100,
+        "output" : {"type" : "goods", "qty" : 6},
+        "inputs" : [{"type" : "steel", "qty" : 4},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 101,
+        "output" : {"type" : "goods", "qty" : 6},
+        "inputs" : [{"type" : "plastic", "qty" : 4},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 102,
+        "output" : {"type" : "goods", "qty" : 6},
+        "inputs" : [{"type" : "lumber", "qty" : 4},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 103,
+        "output" : {"type" : "goods", "qty" : 5},
+        "inputs" : [{"type" : "steel", "qty" : 2},{"type" : "energy", "qty" : 2}]
+    },
+    {
+        "value" : 105,
+        "output" : {"type" : "goods", "qty" : 5},
+        "inputs" : [{"type" : "aluminum", "qty" : 2},{"type" : "energy", "qty" : 2}]
+    },
+    {
+        "value" : 108,
+        "output" : {"type" : "goods", "qty" : 5},
+        "inputs" : [{"type" : "lumber", "qty" : 2},{"type" : "energy", "qty" : 2}]
+    },
+    {
+        "value" : 111,
+        "output" : {"type" : "goods", "qty" : 8},
+        "inputs" : [{"type" : "aluminum", "qty" : 2},{"type" : "steel", "qty" : 2},{"type" : "plastic", "qty" : 2},{"type" : "lumber", "qty" : 2},{"type" : "energy", "qty" : 2}]
+    }
+    ]

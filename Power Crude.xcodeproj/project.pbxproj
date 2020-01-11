@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */; };
+		D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */; };
+		D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F123C4219900436137 /* AuctionViewController.swift */; };
+		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
+		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
+		D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */; };
 		D9F716DA23C2D12700442437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F716D923C2D12700442437 /* AppDelegate.swift */; };
 		D9F716DC23C2D12700442437 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F716DB23C2D12700442437 /* ViewController.swift */; };
 		D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F716DD23C2D12700442437 /* Assets.xcassets */; };
 		D9F716E123C2D12700442437 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F716DF23C2D12700442437 /* Main.storyboard */; };
 		D9F716ED23C2D12700442437 /* Power_CrudeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F716EC23C2D12700442437 /* Power_CrudeTests.swift */; };
 		D9F716F823C2D12800442437 /* Power_CrudeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F716F723C2D12800442437 /* Power_CrudeUITests.swift */; };
+		D9F7170923C2D26700442437 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F7170723C2D26700442437 /* Asset.swift */; };
+		D9F7170A23C2D26700442437 /* Commodities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F7170823C2D26700442437 /* Commodities.swift */; };
+		D9F7170E23C2D2CE00442437 /* Assets.json in Resources */ = {isa = PBXBuildFile; fileRef = D9F7170D23C2D2CE00442437 /* Assets.json */; };
+		D9F7171023C2D39D00442437 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F7170F23C2D39D00442437 /* GameState.swift */; };
+		D9F792BA23C5789C0047A47D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F792B923C5789C0047A47D /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSidebarViewController.swift; sourceTree = "<group>"; };
+		D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationSidebarViewController.xib; sourceTree = "<group>"; };
+		D987D4F123C4219900436137 /* AuctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewController.swift; sourceTree = "<group>"; };
+		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
+		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
+		D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCollectionViewItem.xib; sourceTree = "<group>"; };
 		D9F716D623C2D12700442437 /* Power Crude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Power Crude.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F716D923C2D12700442437 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F716DB23C2D12700442437 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +63,11 @@
 		D9F716F323C2D12800442437 /* Power CrudeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Power CrudeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F716F723C2D12800442437 /* Power_CrudeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Power_CrudeUITests.swift; sourceTree = "<group>"; };
 		D9F716F923C2D12800442437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9F7170723C2D26700442437 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		D9F7170823C2D26700442437 /* Commodities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commodities.swift; sourceTree = "<group>"; };
+		D9F7170D23C2D2CE00442437 /* Assets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Assets.json; path = "Power Crude/Assets.json"; sourceTree = SOURCE_ROOT; };
+		D9F7170F23C2D39D00442437 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		D9F792B923C5789C0047A47D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D987D4F523C424D400436137 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */,
+				D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		D9F716CD23C2D12700442437 = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +129,17 @@
 			children = (
 				D9F716D923C2D12700442437 /* AppDelegate.swift */,
 				D9F716DB23C2D12700442437 /* ViewController.swift */,
+				D987D4F123C4219900436137 /* AuctionViewController.swift */,
+				D987D4F223C4219900436137 /* AuctionViewController.xib */,
+				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
+				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
 				D9F716DD23C2D12700442437 /* Assets.xcassets */,
 				D9F716DF23C2D12700442437 /* Main.storyboard */,
 				D9F716E223C2D12700442437 /* Info.plist */,
 				D9F716E323C2D12700442437 /* Power_Crude.entitlements */,
+				D9F7170523C2D1F300442437 /* Model */,
+				D9F7170C23C2D2C000442437 /* Resources */,
+				D987D4F523C424D400436137 /* Views */,
 			);
 			path = "Power Crude";
 			sourceTree = "<group>";
@@ -122,6 +160,25 @@
 				D9F716F923C2D12800442437 /* Info.plist */,
 			);
 			path = "Power CrudeUITests";
+			sourceTree = "<group>";
+		};
+		D9F7170523C2D1F300442437 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9F7170723C2D26700442437 /* Asset.swift */,
+				D9F7170823C2D26700442437 /* Commodities.swift */,
+				D9F7170F23C2D39D00442437 /* GameState.swift */,
+				D9F792B923C5789C0047A47D /* Player.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D9F7170C23C2D2C000442437 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D9F7170D23C2D2CE00442437 /* Assets.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +285,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */,
+				D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */,
+				D9F7170E23C2D2CE00442437 /* Assets.json in Resources */,
+				D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
 				D9F716E123C2D12700442437 /* Main.storyboard in Resources */,
 			);
@@ -254,7 +315,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */,
+				D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */,
+				D9F7170923C2D26700442437 /* Asset.swift in Sources */,
+				D9F7170A23C2D26700442437 /* Commodities.swift in Sources */,
+				D9F7171023C2D39D00442437 /* GameState.swift in Sources */,
+				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,
+				D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */,
 				D9F716DA23C2D12700442437 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
