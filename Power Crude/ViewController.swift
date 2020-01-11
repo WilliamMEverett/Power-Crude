@@ -8,12 +8,13 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, PhaseViewControllerDelegate {
     
     @IBOutlet weak var containerView : NSView!
     @IBOutlet weak var sidebarContainerView : NSView!
     var informationViewController : InformationSidebarViewController!
     
+    var currentPhaseViewController : PhaseViewController?
     var gameState : GameState?
 
     override func viewDidLoad() {
@@ -33,14 +34,49 @@ class ViewController: NSViewController {
         
         informationViewController.gameState = gameState
         
-        let auctionViewController = AuctionViewController()
-        auctionViewController.gameState = gameState
-        self.addChild(auctionViewController)
-        auctionViewController.view.frame = containerView.bounds
-        containerView.addSubview(auctionViewController.view)
+        installNewPhaseController(phaseController: AuctionViewController())
+    }
+    
+    func installNewPhaseController(phaseController : PhaseViewController?) {
+        if (currentPhaseViewController != nil) {
+            currentPhaseViewController!.delegate = nil
+            currentPhaseViewController!.view.removeFromSuperview()
+            currentPhaseViewController!.removeFromParent()
+        }
         
+        currentPhaseViewController = phaseController
+        if (currentPhaseViewController != nil) {
+            currentPhaseViewController?.gameState = gameState
+            self.addChild(currentPhaseViewController!)
+            currentPhaseViewController!.view.frame = containerView.bounds
+            containerView.addSubview(currentPhaseViewController!.view)
+            currentPhaseViewController!.delegate = self
+        }
     }
 
-
+//MARK: - PhaseViewControllerDelegate -
+    func phaseCompleted(viewController: PhaseViewController) {
+        if (gameState == nil) {
+            return
+        }
+        
+        gameState?.finishPhase()
+        
+        gameState!.prepareForPhase()
+        
+        switch gameState!.phase {
+        case .Auction:
+            installNewPhaseController(phaseController: AuctionViewController())
+        case .Production:
+            print("\(String(describing: gameState!.phase)) not implemented")
+            installNewPhaseController(phaseController: nil)
+        case .Market:
+            print("\(String(describing: gameState!.phase)) not implemented")
+            installNewPhaseController(phaseController: nil)
+        case .Events:
+            print("\(String(describing: gameState!.phase)) not implemented")
+            installNewPhaseController(phaseController: nil)
+        }
+    }
 }
 

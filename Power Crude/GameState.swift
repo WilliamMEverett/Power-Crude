@@ -30,6 +30,8 @@ class GameState: NSObject {
     var playerOrder = [Int]()
     var players : [Int:Player] = [:]
     
+    var lowestAssetInMarket : Asset? = nil
+    
     init(numberOfPlayers : Int) throws {
         super.init()
         
@@ -58,6 +60,64 @@ class GameState: NSObject {
     }
     
     func prepareForPhase() {
+        if (phase == .Auction) {
+            if stage == 2 {
+                lowestAssetInMarket = auctionMarket.first
+            }
+            else {
+                lowestAssetInMarket = nil
+            }
+        }
+    }
+    
+    func finishPhase() {
+        if (phase == .Auction) {
+            
+            if stage == 1 && auctionMarket.count >= 6 && !movingToStage2 {
+                reshuffleRegularAssetDeck.append(auctionMarket.popLast()!)
+                
+                _ = drawAssetForMarket(regularMarket: true)
+            }
+            if stage == 2 {
+                if mfgAuctionMarket.count >= 4 {
+                    manufacturingAssetDeck.append( mfgAuctionMarket.popLast()!)
+                    
+                    _ = drawAssetForMarket(regularMarket: false)
+                }
+                
+                if lowestAssetInMarket != nil && auctionMarket.count > 0 && auctionMarket.first == lowestAssetInMarket {
+                    discardDeck.append(auctionMarket.remove(at: 0))
+                    _ = drawAssetForMarket(regularMarket: true)
+                }
+                lowestAssetInMarket = nil
+            }
+            
+            if movingToStage2 && stage == 1 {
+                stage = 2
+                movingToStage2 = false
+                regularAssetDeck.append(contentsOf: reshuffleRegularAssetDeck.shuffled())
+                reshuffleRegularAssetDeck.removeAll()
+                
+                while let indexToRemove = regularAssetDeck.firstIndex(where: { ($0.type == .production || $0.type == .refining) && $0.output.qty == 1 }) {
+                    discardDeck.append(regularAssetDeck.remove(at: indexToRemove) )
+                }
+                while let indexToRemove = auctionMarket.firstIndex(where: { ($0.type == .production || $0.type == .refining) && $0.output.qty == 1 }) {
+                    discardDeck.append(auctionMarket.remove(at: indexToRemove) )
+                }
+                
+                while regularAssetDeck.count > 0 && auctionMarket.count < 4 {
+                    _ = drawAssetForMarket(regularMarket: true)
+                }
+                while stage == 2 && auctionMarket.count > 4 {
+                    discardDeck.append(auctionMarket.remove(at: 0))
+                }
+            }
+
+            playerOrder.sort(by: {players[$0]!.totalAssetValue > players[$1]!.totalAssetValue})
+            phase = .Production
+        }
+        
+        NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
     }
     
     func purchaseAssetIndexFromMarketForPlayer(regularMarket : Bool, index : Int, price : Int, player : Int) -> Bool {

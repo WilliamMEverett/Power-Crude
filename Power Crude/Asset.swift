@@ -21,7 +21,7 @@ enum AssetInitializationError : Error {
     case invalidInputs
 }
 
-struct CommodityQty : CustomStringConvertible {
+struct CommodityQty : CustomStringConvertible, Equatable {
     var type : Commodity;
     var qty : Int;
     
@@ -30,7 +30,8 @@ struct CommodityQty : CustomStringConvertible {
     }
 }
 
-struct Asset : CustomStringConvertible {
+struct Asset : CustomStringConvertible, Equatable {
+    
     var description: String {
         var res = "[\(value)] "
         if (inputs.count > 0) {
@@ -112,6 +113,10 @@ struct Asset : CustomStringConvertible {
         else {
             throw AssetInitializationError.invalidOutput
         }
+    }
+    
+    static func == (lhs: Asset, rhs: Asset) -> Bool {
+        return lhs.value == rhs.value && lhs.initialOrdering == rhs.initialOrdering && lhs.description == rhs.description
     }
     
     private func parseArrayOfNestedCommodityTypePairs(ar : [Any]) -> [Any]? {

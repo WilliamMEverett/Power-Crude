@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */; };
 		D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */; };
+		D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */; };
 		D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F123C4219900436137 /* AuctionViewController.swift */; };
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSidebarViewController.swift; sourceTree = "<group>"; };
 		D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationSidebarViewController.xib; sourceTree = "<group>"; };
+		D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewController.swift; sourceTree = "<group>"; };
 		D987D4F123C4219900436137 /* AuctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewController.swift; sourceTree = "<group>"; };
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				D9F716D923C2D12700442437 /* AppDelegate.swift */,
 				D9F716DB23C2D12700442437 /* ViewController.swift */,
+				D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */,
 				D987D4F123C4219900436137 /* AuctionViewController.swift */,
 				D987D4F223C4219900436137 /* AuctionViewController.xib */,
 				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
@@ -323,6 +326,7 @@
 				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,
 				D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */,
+				D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */,
 				D9F716DA23C2D12700442437 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

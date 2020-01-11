@@ -8,11 +8,9 @@
 
 import Cocoa
 
-class AuctionViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
+class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
 
     static let assetCollectionViewIdentifier = NSUserInterfaceItemIdentifier("assetCollectionViewIdentifier")
-    
-    weak var gameState : GameState?
     
     @IBOutlet weak var collectionView : NSCollectionView!
     @IBOutlet weak var messageTextField : NSTextField!
@@ -51,9 +49,11 @@ class AuctionViewController: NSViewController, NSCollectionViewDataSource, NSCol
         currentPlayerIndex = gameState!.playerOrder.first(where: {!playersWhoHaveFinished.contains($0)}) ?? 0
         
         if (currentPlayerIndex == 0) {
-// TODO: Auction phase over
+            delegate?.phaseCompleted(viewController: self)
         }
-        configureUIForCurrentState()
+        else {
+            configureUIForCurrentState()
+        }
     }
     
     fileprivate func findNextBidder() {

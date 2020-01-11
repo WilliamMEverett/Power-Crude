@@ -24,8 +24,8 @@ class InformationSidebarViewController: NSViewController {
         refreshPlayerInformation()
         
         weak var weakSelf = self
-        self.notificationObject = NotificationCenter.default.addObserver(forName: GameState.kGameStateChangedNotification, object: gameState, queue: nil, using: {_ in
-            if weakSelf?.gameState != nil {
+        self.notificationObject = NotificationCenter.default.addObserver(forName: GameState.kGameStateChangedNotification, object: nil, queue: nil, using: {notification in
+            if weakSelf?.gameState == notification.object as? GameState {
                 weakSelf?.refreshPlayerInformation()
             }
         })
@@ -48,13 +48,16 @@ class InformationSidebarViewController: NSViewController {
         nonNilGameState.playerOrder.forEach( {
             let player = nonNilGameState.players[$0]!
             
-            displayString.append(NSAttributedString(string: "Player \(player.playerNumber)\n", attributes: [.font:NSFont.boldSystemFont(ofSize: 20)]))
-            displayString.append(NSAttributedString(string: "[\(player.totalAssetValue)]   $\(player.money)\n", attributes: [.font: NSFont.boldSystemFont(ofSize: 14)]))
+            let titleFont = NSFont(name: "Times New Roman", size: 20)
+            
+            displayString.append(NSAttributedString(string: "Player \(player.playerNumber)\n", attributes: [.font:titleFont!]))
+            displayString.append(NSAttributedString(string: "[\(player.totalAssetValue)]   $\(player.money)\n\n", attributes: [.font: NSFont.systemFont(ofSize: 16)]))
             player.assets.forEach( {
-                displayString.append(NSAttributedString(string: "\($0.description)\n", attributes: [:]))
+                displayString.append(NSAttributedString(string: "\($0.description)\n", attributes:  [.font: NSFont(name: "Helvetica", size: 12)!]))
             })
             
-            displayString.append(NSAttributedString(string: "\(player.commoditiesDescription)\n\n\n", attributes: [:]))
+            displayString.append(NSAttributedString(string: "\n\(player.commoditiesDescription)\n______________\n", attributes: [.font: NSFont(name: "Helvetica", size: 12)!]))
+            
             
         })
         playerTextView.textStorage?.setAttributedString(displayString)
