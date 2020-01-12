@@ -59,6 +59,14 @@ class GameState: NSObject {
         
     }
     
+    var currentRetailPriceEnergy : Int {
+        return 8
+    }
+    
+    var currentWholesalePriceEnergy : Int {
+        return 4
+    }
+    
     func prepareForPhase() {
         if (phase == .Auction) {
             if stage == 2 {
@@ -116,6 +124,18 @@ class GameState: NSObject {
             playerOrder.sort(by: {players[$0]!.totalAssetValue > players[$1]!.totalAssetValue})
             phase = .Production
         }
+        else if phase == .Production {
+            phase = .Market
+        }
+        
+        NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
+    }
+    
+    func produceAssets(player: Int, assets:[Asset]) {
+        let result = players[player]!.getResultFromProducingAssets(assets: assets, energyBuy: currentRetailPriceEnergy, energySell: currentWholesalePriceEnergy)
+        
+        players[player]!.money = result.money
+        players[player]!.commodities = result.stockpile
         
         NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
     }
@@ -127,6 +147,8 @@ class GameState: NSObject {
         else {
             players[player]?.assets.append(mfgAuctionMarket.remove(at: index))
         }
+        
+        players[player]?.assets.sort(by: { $0.value > $1.value })
         
         players[player]?.money -= price
         

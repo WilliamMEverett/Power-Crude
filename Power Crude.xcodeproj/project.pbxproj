@@ -10,6 +10,8 @@
 		D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */; };
 		D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */; };
 		D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */; };
+		D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5CC23CA7B33005A7B4C /* ProductionViewController.swift */; };
+		D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */; };
 		D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F123C4219900436137 /* AuctionViewController.swift */; };
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
@@ -48,6 +50,8 @@
 		D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSidebarViewController.swift; sourceTree = "<group>"; };
 		D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationSidebarViewController.xib; sourceTree = "<group>"; };
 		D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewController.swift; sourceTree = "<group>"; };
+		D961D5CC23CA7B33005A7B4C /* ProductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionViewController.swift; sourceTree = "<group>"; };
+		D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductionViewController.xib; sourceTree = "<group>"; };
 		D987D4F123C4219900436137 /* AuctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewController.swift; sourceTree = "<group>"; };
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */,
 				D987D4F123C4219900436137 /* AuctionViewController.swift */,
 				D987D4F223C4219900436137 /* AuctionViewController.xib */,
+				D961D5CC23CA7B33005A7B4C /* ProductionViewController.swift */,
+				D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */,
 				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
 				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
 				D9F716DD23C2D12700442437 /* Assets.xcassets */,
@@ -292,6 +298,7 @@
 				D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */,
 				D9F7170E23C2D2CE00442437 /* Assets.json in Resources */,
 				D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */,
+				D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
 				D9F716E123C2D12700442437 /* Main.storyboard in Resources */,
 			);
@@ -322,6 +329,7 @@
 				D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */,
 				D9F7170923C2D26700442437 /* Asset.swift in Sources */,
 				D9F7170A23C2D26700442437 /* Commodities.swift in Sources */,
+				D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */,
 				D9F7171023C2D39D00442437 /* GameState.swift in Sources */,
 				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,

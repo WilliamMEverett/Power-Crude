@@ -126,7 +126,7 @@ Gw
                     <rect key="frame" x="141" y="8" width="386" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" selectable="YES" alignment="center" title="Player 1 select an asset to buy or pass" id="CeQ-1K-ZcH">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

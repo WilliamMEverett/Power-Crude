@@ -43,4 +43,113 @@ class Player: NSObject {
         
         return comStringArray.joined(separator: ", ")
     }
+    
+    func assetsThatCanProduce(energyPrice: Int) -> Set<Int> {
+        var resultSet = Set<Int>( assets.enumerated().filter( { $0.element.inputs.count == 0}).map( { $0.offset }) )
+        
+        var stockpile = commodities
+        
+        resultSet.forEach( {
+            let com = assets[$0].output.type
+            stockpile[com] = stockpile[com] ?? 0 + assets[$0].output.qty
+        })
+        
+        assets.enumerated().filter( { $0.element.inputs.count > 0 && $0.element.type == .refining}).forEach( {
+            let check = $0.element.canProduceWithInputs(stockpile: stockpile)
+            if check.success {
+                resultSet.insert($0.offset)
+                let com = $0.element.output.type
+                stockpile[com] = stockpile[com] ?? 0 + $0.element.output.qty
+            }
+        })
+        
+        assets.enumerated().filter( { $0.element.inputs.count > 0 && $0.element.type == .manufacturing }).forEach( {
+            let check = $0.element.canProduceWithInputs(stockpile: stockpile)
+            if check.success {
+                let requiredEnergy = check.energy - (stockpile[.energy] ?? 0)
+                if (requiredEnergy*energyPrice <= self.money) {
+                    resultSet.insert($0.offset)
+                    let com = $0.element.output.type
+                    stockpile[com] = stockpile[com] ?? 0 + $0.element.output.qty
+                }
+            }
+        })
+        
+        return resultSet
+    }
+    
+    func getResultFromProducingAssets(assets:[Asset], energyBuy: Int, energySell: Int, startingCommodities:[Commodity:Int]? = nil, startingMoney: Int? = nil) -> (stockpile:[Commodity:Int], money:Int) {
+        var remainingMoney = startingMoney != nil ? startingMoney! : money
+        
+        var finalCommodities = startingCommodities != nil ? startingCommodities! : commodities
+        
+        assets.filter({$0.inputs.count == 0}).forEach( {
+            finalCommodities[$0.output.type] = finalCommodities[$0.output.type] ?? 0 + $0.output.qty
+        })
+        
+        let types : [AssetType] = [.refining, .manufacturing]
+        types.forEach { (t) in
+            assets.filter({$0.inputs.count > 0 && $0.type == t}).forEach( {
+                let check = $0.canProduceWithInputs(stockpile: finalCommodities)
+                if !check.success {
+                    return
+                }
+                let energyRequired = check.energy
+                let purchaseEnergy = energyRequired - (finalCommodities[.energy] ?? 0)
+                if purchaseEnergy > 0 && purchaseEnergy*energyBuy > remainingMoney {
+                    return
+                }
+                
+                if purchaseEnergy > 0 {
+                    remainingMoney -= purchaseEnergy*energyBuy
+                    finalCommodities.removeValue(forKey: .energy)
+                }
+                else if energyRequired > 0 {
+                    finalCommodities[.energy] = finalCommodities[.energy]! - energyRequired
+                }
+                
+                $0.inputs.forEach { (inpAny) in
+                    if let inpCom = inpAny as? CommodityQty {
+                        let newQty = finalCommodities[inpCom.type] ?? 0 - inpCom.qty
+                        if newQty < 0 {
+                            exit(-1)
+                        }
+                        else if newQty == 0 {
+                            finalCommodities.removeValue(forKey: inpCom.type)
+                        }
+                        else {
+                            finalCommodities[inpCom.type] = newQty
+                        }
+                    }
+                    else if let inpArray = inpAny as? [Any] {
+                        var requirementSatisfied = false
+                        inpArray.forEach { (optAny) in
+                            if let optCom = optAny as? CommodityQty {
+                                if !requirementSatisfied && finalCommodities[optCom.type] ?? 0 >= optCom.qty {
+                                    requirementSatisfied = true
+                                    finalCommodities[optCom.type] = finalCommodities[optCom.type] ?? 0 - optCom.qty
+                                }
+                            }
+                            else {
+                                exit(-1)
+                            }
+                        }
+                        if (!requirementSatisfied) {
+                            exit(-1)
+                        }
+                    }
+                }
+                
+                finalCommodities[$0.output.type] = finalCommodities[$0.output.type] ?? 0 + $0.output.qty
+                
+            })
+        }
+        
+        if (finalCommodities[.energy] ?? 0 > 0) {
+            remainingMoney += finalCommodities[.energy]! * energySell
+        }
+        finalCommodities.removeValue(forKey: .energy)
+        
+        return (stockpile:finalCommodities, money: remainingMoney)
+    }
 }

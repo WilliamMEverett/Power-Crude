@@ -115,6 +115,49 @@ struct Asset : CustomStringConvertible, Equatable {
         }
     }
     
+    func canProduceWithInputs(stockpile : [Commodity:Int]) -> (success: Bool, energy: Int) {
+        
+        var energyRequired = 0
+        
+        if (inputs.count == 0) {
+            return (success: true, energy : energyRequired)
+        }
+        let success = inputs.reduce(true) { (res, inp) -> Bool in
+            if (!res) {
+                return false
+            }
+            
+            if let comInp = inp as? CommodityQty {
+                if comInp.type == .energy {
+                    energyRequired += comInp.qty
+                    return true
+                }
+                else {
+                    return stockpile[comInp.type] ?? 0 >= comInp.qty
+                }
+                
+            }
+            else if let arrayInp = inp as? [Any] {
+                return arrayInp.reduce(false) { (optRes, optInp) -> Bool in
+                    if optRes {
+                        return true
+                    }
+                    if let comOptIn = optInp as? CommodityQty {
+                        return stockpile[comOptIn.type] ?? 0 >= comOptIn.qty
+                    }
+                    else {
+                        exit(-1)
+                    }
+                }
+            }
+            else {
+                exit(-1)
+            }
+        }
+        
+        return (success: success, energy : energyRequired)
+    }
+    
     static func == (lhs: Asset, rhs: Asset) -> Bool {
         return lhs.value == rhs.value && lhs.initialOrdering == rhs.initialOrdering && lhs.description == rhs.description
     }
