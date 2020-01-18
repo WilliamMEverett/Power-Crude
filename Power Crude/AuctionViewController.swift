@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
-
+class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NSCollectionViewDelegate, AssetSelectionViewControllerDelegate {
+    
     static let assetCollectionViewIdentifier = NSUserInterfaceItemIdentifier("assetCollectionViewIdentifier")
     
     @IBOutlet weak var collectionView : NSCollectionView!
@@ -23,6 +23,8 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     
     @IBOutlet weak var remainingPlayersTextField : NSTextField!
     @IBOutlet weak var remainingBiddingTextField : NSTextField!
+    
+    var assetSelectionPopover : NSPopover?
     
     var biddingPlayerIndex : Int = 0
     var biddingPlayerBid : Int = 0
@@ -202,6 +204,16 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     
     @IBAction func sellBidButtonPressed(sender : NSButton) {
         if (selectedAssetIndexPath == nil) {
+            guard let assets = gameState?.players[currentPlayerIndex]?.assets, assets.count > 0 else {
+                return
+            }
+            let assetSelectionController = AssetSelectionViewController(titleString: "Select Asset to Sell", assetsIn: assets)
+            assetSelectionController.delegate = self
+            
+            assetSelectionPopover = NSPopover();
+            assetSelectionPopover?.contentViewController = assetSelectionController
+            assetSelectionPopover?.behavior = .transient
+            assetSelectionPopover?.show(relativeTo: sellButton.bounds, of: sellButton, preferredEdge: .minY)
             
         }
         else if (biddingPlayerBid > (highestCurrentBid?.bid ?? 0) && biddingPlayerBid >= (assetForIndexPath(path: selectedAssetIndexPath!)?.value ?? 1000) && biddingPlayerBid <= (gameState?.players[biddingPlayerIndex]?.money ?? 0) ) {
@@ -218,6 +230,23 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     @IBAction func minusButtonPressed(sender : NSButton) {
         biddingPlayerBid -= 1
         configureUIForCurrentState()
+    }
+    
+// MARK: - AssetSelectionViewController -
+    
+    func assetSelectionViewControllerDidSelectAsset(sender: AssetSelectionViewController, asset: Asset?) {
+        assetSelectionPopover?.close()
+        assetSelectionPopover = nil
+        if asset == nil {
+            return
+        }
+        
+        if !(gameState?.sellAssetForPlayer(asset: asset!, player: currentPlayerIndex) ?? false) {
+            print ("error")
+            return
+        }
+        playersWhoHaveFinished.insert(currentPlayerIndex)
+        findCurrentPlayer()
     }
     
 // MARK: - CollectionView delegate -

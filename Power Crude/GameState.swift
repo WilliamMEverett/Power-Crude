@@ -122,6 +122,10 @@ class GameState: NSObject {
                 while stage == 2 && auctionMarket.count > 4 {
                     discardDeck.append(auctionMarket.remove(at: 0))
                 }
+                
+                while manufacturingAssetDeck.count > 0 && mfgAuctionMarket.count < 4 {
+                    _ = drawAssetForMarket(regularMarket: false)
+                }
             }
 
             playerOrder.sort(by: {players[$0]!.totalAssetValue > players[$1]!.totalAssetValue})
@@ -180,6 +184,20 @@ class GameState: NSObject {
         players[player]!.commodities = result.stockpile
         
         NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
+    }
+    
+    func sellAssetForPlayer(asset : Asset, player : Int) -> Bool {
+        guard let index = players[player]?.assets.firstIndex(of: asset) else {
+            return false
+        }
+        
+        let a = players[player]!.assets.remove(at: index)
+        players[player]!.money += a.value
+        discardDeck.append(a)
+        
+        NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
+        
+        return true
     }
     
     func purchaseAssetIndexFromMarketForPlayer(regularMarket : Bool, index : Int, price : Int, player : Int) -> Bool {

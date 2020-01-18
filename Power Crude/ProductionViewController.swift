@@ -56,7 +56,7 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
             IndexPath(item: $0, section: 0)
         }))
         
-        collectionView.selectionIndexPaths = selectableIndices
+        collectionView.selectionIndexPaths = self.filteredSelectedIndices(selectedIn: selectableIndices, limit: 4)
         
         updatePreview()
     }
@@ -95,6 +95,14 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
         }
         
         resultsLabel.stringValue = resultString
+    }
+    
+    func filteredSelectedIndices( selectedIn : Set<IndexPath>, limit : Int) -> Set<IndexPath> {
+        var selected = selectedIn.intersection(selectableIndices);
+        while selected.count > 4 {
+            selected.removeFirst()
+        }
+        return selected
     }
     
     // MARK: - Actions -
@@ -140,7 +148,7 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
     }
     
     func collectionView(_ collectionView: NSCollectionView, shouldSelectItemsAt indexPaths: Set<IndexPath>) -> Set<IndexPath> {
-        return indexPaths.intersection(selectableIndices)
+        return filteredSelectedIndices(selectedIn: indexPaths, limit: 4)
     }
     
 
