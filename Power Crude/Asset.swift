@@ -133,7 +133,7 @@ struct Asset : CustomStringConvertible, Equatable {
                     return true
                 }
                 else {
-                    return stockpile[comInp.type] ?? 0 >= comInp.qty
+                    return (stockpile[comInp.type] ?? 0) >= comInp.qty
                 }
                 
             }
@@ -143,7 +143,7 @@ struct Asset : CustomStringConvertible, Equatable {
                         return true
                     }
                     if let comOptIn = optInp as? CommodityQty {
-                        return stockpile[comOptIn.type] ?? 0 >= comOptIn.qty
+                        return (stockpile[comOptIn.type] ?? 0) >= comOptIn.qty
                     }
                     else {
                         exit(-1)

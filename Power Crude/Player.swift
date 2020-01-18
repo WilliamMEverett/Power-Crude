@@ -51,7 +51,7 @@ class Player: NSObject {
         
         resultSet.forEach( {
             let com = assets[$0].output.type
-            stockpile[com] = stockpile[com] ?? 0 + assets[$0].output.qty
+            stockpile[com] = (stockpile[com] ?? 0) + assets[$0].output.qty
         })
         
         assets.enumerated().filter( { $0.element.inputs.count > 0 && $0.element.type == .refining}).forEach( {
@@ -59,7 +59,7 @@ class Player: NSObject {
             if check.success {
                 resultSet.insert($0.offset)
                 let com = $0.element.output.type
-                stockpile[com] = stockpile[com] ?? 0 + $0.element.output.qty
+                stockpile[com] = (stockpile[com] ?? 0) + $0.element.output.qty
             }
         })
         
@@ -70,7 +70,7 @@ class Player: NSObject {
                 if (requiredEnergy*energyPrice <= self.money) {
                     resultSet.insert($0.offset)
                     let com = $0.element.output.type
-                    stockpile[com] = stockpile[com] ?? 0 + $0.element.output.qty
+                    stockpile[com] = (stockpile[com] ?? 0) + $0.element.output.qty
                 }
             }
         })
@@ -84,7 +84,7 @@ class Player: NSObject {
         var finalCommodities = startingCommodities != nil ? startingCommodities! : commodities
         
         assets.filter({$0.inputs.count == 0}).forEach( {
-            finalCommodities[$0.output.type] = finalCommodities[$0.output.type] ?? 0 + $0.output.qty
+            finalCommodities[$0.output.type] = (finalCommodities[$0.output.type] ?? 0) + $0.output.qty
         })
         
         let types : [AssetType] = [.refining, .manufacturing]
@@ -110,7 +110,7 @@ class Player: NSObject {
                 
                 $0.inputs.forEach { (inpAny) in
                     if let inpCom = inpAny as? CommodityQty {
-                        let newQty = finalCommodities[inpCom.type] ?? 0 - inpCom.qty
+                        let newQty = (finalCommodities[inpCom.type] ?? 0) - inpCom.qty
                         if newQty < 0 {
                             exit(-1)
                         }
@@ -125,9 +125,9 @@ class Player: NSObject {
                         var requirementSatisfied = false
                         inpArray.forEach { (optAny) in
                             if let optCom = optAny as? CommodityQty {
-                                if !requirementSatisfied && finalCommodities[optCom.type] ?? 0 >= optCom.qty {
+                                if !requirementSatisfied && (finalCommodities[optCom.type] ?? 0) >= optCom.qty {
                                     requirementSatisfied = true
-                                    finalCommodities[optCom.type] = finalCommodities[optCom.type] ?? 0 - optCom.qty
+                                    finalCommodities[optCom.type] = (finalCommodities[optCom.type] ?? 0) - optCom.qty
                                 }
                             }
                             else {
@@ -140,12 +140,12 @@ class Player: NSObject {
                     }
                 }
                 
-                finalCommodities[$0.output.type] = finalCommodities[$0.output.type] ?? 0 + $0.output.qty
+                finalCommodities[$0.output.type] = (finalCommodities[$0.output.type] ?? 0) + $0.output.qty
                 
             })
         }
         
-        if (finalCommodities[.energy] ?? 0 > 0) {
+        if ((finalCommodities[.energy] ?? 0) > 0) {
             remainingMoney += finalCommodities[.energy]! * energySell
         }
         finalCommodities.removeValue(forKey: .energy)

@@ -70,8 +70,7 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
         case .Production:
             installNewPhaseController(phaseController: ProductionViewController())
         case .Market:
-            print("\(String(describing: gameState!.phase)) not implemented")
-            installNewPhaseController(phaseController: nil)
+            installNewPhaseController(phaseController: MarketViewController())
         case .Events:
             print("\(String(describing: gameState!.phase)) not implemented")
             installNewPhaseController(phaseController: nil)

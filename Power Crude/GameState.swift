@@ -25,6 +25,8 @@ class GameState: NSObject {
     var mfgAuctionMarket : [Asset]!
     var phase : GameStatePhase = .Auction
     
+    var commodityMarket : [Commodity:Market]!
+    
     var stage : Int = 1
     var movingToStage2 : Bool = false
     var playerOrder = [Int]()
@@ -36,6 +38,7 @@ class GameState: NSObject {
         super.init()
         
         let assets = try loadAssets()
+        commodityMarket = try loadMarkets()
         
         manufacturingAssetDeck = assets.filter() { $0.type == .manufacturing}.shuffled()
         
@@ -127,6 +130,45 @@ class GameState: NSObject {
         else if phase == .Production {
             phase = .Market
         }
+        else if phase == .Market {
+            phase = .Auction // TODO: hook up to events phase
+        }
+        else if phase == .Events {
+            phase = .Auction
+        }
+        
+        NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
+    }
+    
+    func buyCommodities(player: Int, commodities:[Commodity:Int]) {
+        var totalPriceChange = 0
+        commodities.keys.forEach {
+            guard let price = commodityMarket[$0]?.totalPriceForBuying(qtyBought: commodities[$0]!) else {
+                exit(-1)
+            }
+            totalPriceChange -= price
+            let newQ = (players[player]?.commodities[$0] ?? 0) + commodities[$0]!
+            if (newQ < 0) {
+                exit(-1)
+            }
+            else if (newQ == 0) {
+                players[player]?.commodities.removeValue(forKey: $0)
+            }
+            else {
+                players[player]?.commodities[$0] = newQ
+            }
+            let newMarketQ = (commodityMarket[$0]?.qty ?? 0) - commodities[$0]!
+            if (newMarketQ < 0) {
+                exit(-1)
+            }
+            commodityMarket[$0]?.qty = newMarketQ
+        }
+        
+        let newMoney = (players[player]?.money ?? 0) + totalPriceChange
+        if (newMoney < 0) {
+            exit(-1)
+        }
+        players[player]?.money = newMoney
         
         NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
     }
@@ -216,6 +258,38 @@ class GameState: NSObject {
             return nil
         }
         return assetArray
+    }
+    
+    fileprivate func loadMarkets() throws -> [Commodity:Market]  {
+        
+        guard let filepath = Bundle.main.path(forResource: "markets", ofType: "json") else {
+            throw NSError(domain: "Error loading file", code: 1, userInfo: nil)
+        }
+        guard let contents = try? String(contentsOfFile: filepath) else {
+            throw NSError(domain: "Error loading file", code: 1, userInfo: nil)
+        }
+
+        var json : Any? = nil
+        do {
+            json = try JSONSerialization.jsonObject(with: contents.data(using: .utf8)!, options: [])
+        } catch {
+            NSLog("JSON Error: \(error)");
+        }
+        guard let jsonDict = json as? [String:Any] else {
+            throw NSError(domain: "JSON was not dictionary", code: 1, userInfo: nil)
+        }
+        
+        var mark : [Commodity:Market] = [:]
+        
+        try jsonDict.keys.forEach {
+            guard let dict = jsonDict[$0] as? [String:Any] else {
+                throw NSError(domain: "JSON was not dictionary", code: 1, userInfo: nil)
+            }
+            let m = try Market(dataIn: dict, typeName: $0)
+            mark[m.type] = m
+        }
+        
+        return mark
     }
 
 }

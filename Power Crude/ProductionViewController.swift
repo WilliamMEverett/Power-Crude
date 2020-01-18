@@ -115,13 +115,13 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
     // MARK: - CollectionView delegate -
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gameState?.players[currentPlayer]?.assets.count ?? 0
+        return (gameState?.players[currentPlayer]?.assets.count ?? 0)
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cell = collectionView.makeItem(withIdentifier: ProductionViewController.productionCollectionViewIdentifier, for: indexPath) as! AssetCollectionViewItem
 
-        if (indexPath.item <= gameState?.players[currentPlayer]?.assets.count ?? 0) {
+        if (indexPath.item <= (gameState?.players[currentPlayer]?.assets.count ?? 0)) {
             cell.asset = gameState!.players[currentPlayer]!.assets[indexPath.item]
         }
         else {

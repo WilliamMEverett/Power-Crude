@@ -15,6 +15,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     @IBOutlet weak var collectionView : NSCollectionView!
     @IBOutlet weak var messageTextField : NSTextField!
     @IBOutlet weak var passButton : NSButton!
+    @IBOutlet weak var bidPassButton : NSButton!
     @IBOutlet weak var sellButton : NSButton!
     @IBOutlet weak var minusButton : NSButton!
     @IBOutlet weak var plusButton : NSButton!
@@ -63,15 +64,15 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
         }
         
         biddingPlayerIndex += 1
-        while (biddingPlayerIndex > gameState?.players.count ?? 1 || playersWhoHaveFinished.contains(biddingPlayerIndex) || passedPlayersOnBidding.contains(biddingPlayerIndex) || gameState?.players[biddingPlayerIndex]?.money ?? 0 <= nonNilHighestCurrentBid.bid || gameState?.players[biddingPlayerIndex]?.hasMaximumNumberOfAssets ?? false ) {
+        while (biddingPlayerIndex > (gameState?.players.count ?? 1) || playersWhoHaveFinished.contains(biddingPlayerIndex) || passedPlayersOnBidding.contains(biddingPlayerIndex) || (gameState?.players[biddingPlayerIndex]?.money ?? 0) <= nonNilHighestCurrentBid.bid || (gameState?.players[biddingPlayerIndex]?.hasMaximumNumberOfAssets ?? false) ) {
             if (biddingPlayerIndex == nonNilHighestCurrentBid.player) {
                 break;
             }
-            if (gameState?.players.keys.contains(biddingPlayerIndex) ?? false && (gameState!.players[biddingPlayerIndex]!.money <= nonNilHighestCurrentBid.bid || gameState!.players[biddingPlayerIndex]!.hasMaximumNumberOfAssets)) {
+            if ((gameState?.players.keys.contains(biddingPlayerIndex) ?? false) && (gameState!.players[biddingPlayerIndex]!.money <= nonNilHighestCurrentBid.bid || gameState!.players[biddingPlayerIndex]!.hasMaximumNumberOfAssets)) {
                 passedPlayersOnBidding.insert(biddingPlayerIndex)
             }
             
-            if (biddingPlayerIndex > gameState?.players.count ?? 1) {
+            if (biddingPlayerIndex > (gameState?.players.count ?? 1)) {
                 biddingPlayerIndex = 1
             }
             else {
@@ -82,7 +83,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
         //player has won bidding
         if (biddingPlayerIndex == nonNilHighestCurrentBid.player) {
             playersWhoHaveFinished.insert(nonNilHighestCurrentBid.player)
-            if gameState?.purchaseAssetIndexFromMarketForPlayer(regularMarket: selectedAssetIndexPath!.section != 1, index: selectedAssetIndexPath!.item, price: nonNilHighestCurrentBid.bid, player: nonNilHighestCurrentBid.player) ?? false {
+            if (gameState?.purchaseAssetIndexFromMarketForPlayer(regularMarket: selectedAssetIndexPath!.section != 1, index: selectedAssetIndexPath!.item, price: nonNilHighestCurrentBid.bid, player: nonNilHighestCurrentBid.player) ?? false) {
                 //stage 2 has begun
             }
             
@@ -114,8 +115,10 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             priceTextField.isHidden = true
             minusButton.isHidden = true
             plusButton.isHidden = true
+            bidPassButton.isHidden = true
             sellButton.title = "Sell"
             passButton.title = "Pass"
+            passButton.isHidden = false
             
             
             let currentPlayer = gameState!.players[currentPlayerIndex]!
@@ -140,12 +143,15 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             plusButton.isEnabled = gameState!.players[biddingPlayerIndex]!.money > biddingPlayerBid
             if (highestCurrentBid != nil) {
                 minusButton.isEnabled = biddingPlayerBid > highestCurrentBid!.bid + 1
-                passButton.title = "Pass"
+                passButton.isHidden = true
+                bidPassButton.isHidden = false
                 remainBidString += "  Current high bid: Player \(highestCurrentBid!.player)"
             }
             else {
                 minusButton.isEnabled = biddingPlayerBid > assetForIndexPath(path: selectedAssetIndexPath!)!.value
+                passButton.isHidden = false
                 passButton.title = "Cancel"
+                bidPassButton.isHidden = true
             }
             
             remainingBiddingTextField.stringValue = remainBidString
@@ -185,7 +191,10 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             collectionView.deselectAll(nil)
             configureUIForCurrentState()
         }
-        else {
+    }
+    
+    @IBAction func bidPassButtonPressed(sender : NSButton) {
+        if selectedAssetIndexPath != nil && highestCurrentBid != nil {
             passedPlayersOnBidding.insert(biddingPlayerIndex)
             findNextBidder()
         }
@@ -195,7 +204,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
         if (selectedAssetIndexPath == nil) {
             
         }
-        else if (biddingPlayerBid > highestCurrentBid?.bid ?? 0 && biddingPlayerBid >= assetForIndexPath(path: selectedAssetIndexPath!)?.value ?? 1000 && biddingPlayerBid <= gameState?.players[biddingPlayerIndex]?.money ?? 0 ) {
+        else if (biddingPlayerBid > (highestCurrentBid?.bid ?? 0) && biddingPlayerBid >= (assetForIndexPath(path: selectedAssetIndexPath!)?.value ?? 1000) && biddingPlayerBid <= (gameState?.players[biddingPlayerIndex]?.money ?? 0) ) {
             highestCurrentBid = (player:biddingPlayerIndex,bid:biddingPlayerBid)
             findNextBidder()
         }
@@ -213,7 +222,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     
 // MARK: - CollectionView delegate -
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        if (gameState?.stage ?? 1 == 1) {
+        if ((gameState?.stage ?? 1) == 1) {
             return 1
         }
         else {
@@ -223,19 +232,19 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         if (section == 0) {
-            let auctionSize = (gameState?.stage ?? 1 == 1) ? 6 : 4
+            let auctionSize = ((gameState?.stage ?? 1) == 1) ? 6 : 4
             
-            return min(auctionSize, gameState?.auctionMarket.count ?? 0)
+            return min(auctionSize, (gameState?.auctionMarket.count ?? 0))
         }
         else {
-            return min(4,gameState?.mfgAuctionMarket.count ?? 0)
+            return min(4,(gameState?.mfgAuctionMarket.count ?? 0))
         }
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cell = collectionView.makeItem(withIdentifier: AuctionViewController.assetCollectionViewIdentifier, for: indexPath) as! AssetCollectionViewItem
         let market = indexPath.section == 0 ? gameState?.auctionMarket : gameState?.mfgAuctionMarket
-        if (indexPath.item <= market?.count ?? 0) {
+        if (indexPath.item <= (market?.count ?? 0)) {
             cell.asset = market![indexPath.item]
         }
         else {
