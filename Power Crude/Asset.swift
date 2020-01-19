@@ -9,7 +9,19 @@
 import Foundation
 
 
-enum AssetType {
+enum AssetType : Comparable {
+    static func < (lhs: AssetType, rhs: AssetType) -> Bool {
+        if lhs != rhs {
+            if lhs == production {
+                return true
+            }
+            else if lhs == refining && rhs == manufacturing {
+                return true
+            }
+        }
+        return false
+    }
+    
     case production
     case refining
     case manufacturing

@@ -15,6 +15,8 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
     @IBOutlet var commodityCollectionView : NSCollectionView!
     @IBOutlet var playerLabel : NSTextField!
     @IBOutlet var confirmButton : NSButton!
+    @IBOutlet var sellAllButton : NSButton!
+    @IBOutlet var autoButton : NSButton!
     
     @IBOutlet var moneyChangeLabel : NSTextField!
     @IBOutlet var resultingMoneyLabel : NSTextField!
@@ -56,8 +58,7 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         
         playerLabel.stringValue = "Player \(currentPlayer)"
         
-        commodityCollectionView.reloadData()
-        recalculateCommodityCost()
+        configureAuto()
     }
     
     fileprivate func recalculateCommodityCost() {
@@ -112,6 +113,55 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         return (gameState?.commodityMarket[com]?.qty ?? 0) - adjMarket.qty
     }
     
+    fileprivate func sellAll() {
+        guard let currentCom = gameState?.players[currentPlayer]?.commodities else {
+            return
+        }
+        adjustedMarkets = [:]
+        
+        currentCom.forEach { (key: Commodity, value: Int) in
+            var m = gameState!.commodityMarket[key]!
+            let amountSold = min(m.prices.count - m.qty, value)
+            m.qty += amountSold
+            adjustedMarkets[key] = m
+        }
+        commodityCollectionView.reloadData()
+        recalculateCommodityCost()
+    }
+    
+    fileprivate func configureAuto() {
+        guard let required = gameState?.players[currentPlayer]?.findRequiredCommoditiesToProduce() else {
+            return
+        }
+        adjustedMarkets = [:]
+        var adjustments = required
+        gameState!.players[currentPlayer]!.commodities.forEach { (entry) in
+            let existing = entry.value
+            let newValue = (adjustments[entry.key] ?? 0) - existing
+            adjustments[entry.key] = newValue
+        }
+        var startingMoney = gameState!.players[currentPlayer]!.money
+        
+        adjustments.filter({ $0.value < 0 }).forEach({ (entry) in
+            var m = gameState!.commodityMarket[entry.key]!
+            let amountSold = min(m.prices.count - m.qty, -1*entry.value)
+            startingMoney -= m.totalPriceForBuying(qtyBought: -1*amountSold)!
+            m.qty += amountSold
+            adjustedMarkets[entry.key] = m
+        })
+        
+        adjustments.filter({ $0.value > 0 }).forEach({ (entry) in
+            var m = gameState!.commodityMarket[entry.key]!
+            if let p = m.totalPriceForBuying(qtyBought: entry.value), p <= startingMoney {
+                startingMoney -= p
+                m.qty -= entry.value
+                adjustedMarkets[entry.key] = m
+            }
+        })
+        commodityCollectionView.reloadData()
+        recalculateCommodityCost()
+    }
+    
     // MARK: - Actions -
     
     @IBAction func confirmButtonPressed(sender : NSButton) {
@@ -126,6 +176,14 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         gameState?.buyCommodities(player: currentPlayer, commodities: purchaseDict)
         playerList?.remove(at: 0)
         configureForCurrentPlayer()
+    }
+    
+    @IBAction func sellAllButtonPressed(sender : NSButton) {
+        sellAll()
+    }
+    
+    @IBAction func autoButtonPressed(sender : NSButton) {
+        configureAuto()
     }
     
     // MARK: - CommodityMarketViewItemDelegate -

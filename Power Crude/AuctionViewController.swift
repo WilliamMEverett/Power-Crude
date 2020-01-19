@@ -38,12 +38,12 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
         super.viewDidLoad()
         collectionView.register(AssetCollectionViewItem.self, forItemWithIdentifier: AuctionViewController.assetCollectionViewIdentifier)
         
-        if (gameState?.stage == 2) {
-            (collectionView.collectionViewLayout as! NSCollectionViewGridLayout).maximumNumberOfColumns = 4
-        }
-        else {
-            (collectionView.collectionViewLayout as! NSCollectionViewGridLayout).maximumNumberOfColumns = 3
-        }
+//        if (gameState?.stage == 2) {
+//            (collectionView.collectionViewLayout as! NSCollectionViewGridLayout).maximumNumberOfColumns = 4
+//        }
+//        else {
+//            (collectionView.collectionViewLayout as! NSCollectionViewGridLayout).maximumNumberOfColumns = 3
+//        }
         collectionView.reloadData()
         findCurrentPlayer()
     }
@@ -266,7 +266,8 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             return min(auctionSize, (gameState?.auctionMarket.count ?? 0))
         }
         else {
-            return min(4,(gameState?.mfgAuctionMarket.count ?? 0))
+            let mfgMarketSize = min(4,(gameState?.mfgAuctionMarket.count ?? 0))
+            return mfgMarketSize
         }
     }
     

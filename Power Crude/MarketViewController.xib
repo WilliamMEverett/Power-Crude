@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MarketViewController" customModule="Power_Crude" customModuleProvider="target">
             <connections>
+                <outlet property="autoButton" destination="Ggw-91-eM9" id="vHe-hs-MoG"/>
                 <outlet property="commodityCollectionView" destination="JNr-5P-eOO" id="sHW-fo-tfn"/>
                 <outlet property="commodityResultLabel" destination="zLc-jN-wzc" id="C63-tt-9jA"/>
                 <outlet property="confirmButton" destination="fWh-9s-wlm" id="oZN-No-bye"/>
                 <outlet property="moneyChangeLabel" destination="gDD-WM-zBT" id="3fd-6j-MHF"/>
                 <outlet property="playerLabel" destination="q6j-EE-35T" id="6En-0i-9XL"/>
                 <outlet property="resultingMoneyLabel" destination="PtU-l6-JMc" id="XeY-pZ-cVd"/>
+                <outlet property="sellAllButton" destination="Jxp-Z2-t3j" id="WHM-JF-g0l"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -33,7 +35,7 @@
                 </textField>
                 <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOV-Vm-RjD">
                     <rect key="frame" x="0.0" y="136" width="700" height="428"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="99N-LE-rsy">
                         <rect key="frame" x="1" y="1" width="698" height="426"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +43,7 @@
                             <collectionView ambiguous="YES" id="JNr-5P-eOO">
                                 <rect key="frame" x="0.0" y="0.0" width="698" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewGridLayout key="collectionViewLayout" maximumNumberOfColumns="4" id="HpO-DF-NVi">
+                                <collectionViewGridLayout key="collectionViewLayout" id="HpO-DF-NVi">
                                     <size key="minimumItemSize" width="120" height="110"/>
                                 </collectionViewGridLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -70,6 +72,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="confirmButtonPressedWithSender:" target="-2" id="J6S-5P-nRz"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="Jxp-Z2-t3j">
+                    <rect key="frame" x="131" y="13" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Sell All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nNj-VI-Fmm">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="sellAllButtonPressedWithSender:" target="-2" id="fWg-ff-EtE"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-nc-v0j">
@@ -117,6 +130,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="Ggw-91-eM9">
+                    <rect key="frame" x="20" y="13" width="70" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Auto" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vV6-kJ-ok9">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="autoButtonPressedWithSender:" target="-2" id="6NM-1n-9xH"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="140" y="154"/>
         </customView>

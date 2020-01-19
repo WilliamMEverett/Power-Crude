@@ -116,7 +116,7 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
     }
     
     @IBAction func selectAllButtonPressed(sender : NSButton) {
-        collectionView.selectionIndexPaths = selectableIndices
+        collectionView.selectionIndexPaths = self.filteredSelectedIndices(selectedIn: selectableIndices, limit: 4)
         updatePreview()
     }
     
@@ -140,6 +140,13 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        if collectionView.selectionIndexPaths.count > 4 {
+            var selected = collectionView.selectionIndexPaths
+            while selected.count > 4 {
+                selected.removeFirst()
+            }
+            collectionView.selectionIndexPaths = selected
+        }
         updatePreview()
     }
     

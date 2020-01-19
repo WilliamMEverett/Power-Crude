@@ -162,7 +162,7 @@
     {
         "value" : 51,
         "output" : {"type" : "goods", "qty" : 2},
-        "inputs" : [[{"type" : "plastic", "qty" : 1},{"type" : "aluminum", "qty" : 1},{"type" : "lumber", "qty" : 1},{"type" : "steel", "qty" : 1}],{"type" : "energy", "qty" : 1}]
+        "inputs" : [[{"type" : "aluminum", "qty" : 1},{"type" : "plastic", "qty" : 1},{"type" : "steel", "qty" : 1},{"type" : "lumber", "qty" : 1}],{"type" : "energy", "qty" : 1}]
     },
     {
         "value" : 83,

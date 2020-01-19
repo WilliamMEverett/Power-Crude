@@ -36,10 +36,10 @@
                             <collectionView ambiguous="YES" selectable="YES" id="KDH-41-AoQ">
                                 <rect key="frame" x="0.0" y="0.0" width="698" height="316"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewGridLayout key="collectionViewLayout" id="6s3-D7-95j">
-                                    <size key="minimumItemSize" width="180" height="180"/>
-                                    <size key="maximumItemSize" width="0.0" height="300"/>
-                                </collectionViewGridLayout>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Pt7-CT-JFg">
+                                    <size key="itemSize" width="180" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="20"/>
+                                </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
