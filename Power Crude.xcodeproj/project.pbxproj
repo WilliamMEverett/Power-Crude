@@ -16,6 +16,8 @@
 		D961D5D323CAC5A7005A7B4C /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5D223CAC5A7005A7B4C /* Market.swift */; };
 		D966549923D37712002E9C20 /* AssetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966549723D37712002E9C20 /* AssetSelectionViewController.swift */; };
 		D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D966549823D37712002E9C20 /* AssetSelectionViewController.xib */; };
+		D966549D23D3B5C2002E9C20 /* InformationBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */; };
+		D966549E23D3B5C2002E9C20 /* InformationBottomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */; };
 		D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F123C4219900436137 /* AuctionViewController.swift */; };
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
@@ -64,6 +66,8 @@
 		D961D5D223CAC5A7005A7B4C /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		D966549723D37712002E9C20 /* AssetSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSelectionViewController.swift; sourceTree = "<group>"; };
 		D966549823D37712002E9C20 /* AssetSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetSelectionViewController.xib; sourceTree = "<group>"; };
+		D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBottomViewController.swift; sourceTree = "<group>"; };
+		D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationBottomViewController.xib; sourceTree = "<group>"; };
 		D987D4F123C4219900436137 /* AuctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewController.swift; sourceTree = "<group>"; };
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */,
 				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
 				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
+				D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */,
+				D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */,
 				D966549723D37712002E9C20 /* AssetSelectionViewController.swift */,
 				D966549823D37712002E9C20 /* AssetSelectionViewController.xib */,
 				D9F716DD23C2D12700442437 /* Assets.xcassets */,
@@ -328,6 +334,7 @@
 				D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */,
 				D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
+				D966549E23D3B5C2002E9C20 /* InformationBottomViewController.xib in Resources */,
 				D9F716E123C2D12700442437 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +370,7 @@
 				D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */,
 				D9F7171023C2D39D00442437 /* GameState.swift in Sources */,
 				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,
+				D966549D23D3B5C2002E9C20 /* InformationBottomViewController.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,
 				D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */,
 				D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */,

@@ -45,7 +45,7 @@ class InformationSidebarViewController: NSViewController {
         
         let displayString = NSMutableAttributedString()
         
-        nonNilGameState.playerOrder.forEach( {
+        nonNilGameState.players.keys.sorted().forEach( {
             let player = nonNilGameState.players[$0]!
             
             let titleFont = NSFont(name: "Times New Roman", size: 20)

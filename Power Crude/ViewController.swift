@@ -12,7 +12,10 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
     
     @IBOutlet weak var containerView : NSView!
     @IBOutlet weak var sidebarContainerView : NSView!
+    @IBOutlet weak var bottomContainerView : NSView!
+    
     var informationViewController : InformationSidebarViewController!
+    var bottomInformationViewController : InformationBottomViewController!
     
     var currentPhaseViewController : PhaseViewController?
     var gameState : GameState?
@@ -33,6 +36,13 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
         sidebarContainerView.addSubview(informationViewController.view)
         
         informationViewController.gameState = gameState
+        
+        bottomInformationViewController = InformationBottomViewController()
+        self.addChild(bottomInformationViewController)
+        bottomInformationViewController.view.frame = bottomContainerView.bounds
+        bottomContainerView.addSubview(bottomInformationViewController.view)
+
+        bottomInformationViewController.gameState = gameState
         
         installNewPhaseController(phaseController: AuctionViewController())
     }
