@@ -44,11 +44,6 @@
         "inputs" : [{"type" : "oil", "qty" : 1}]
     },
     {
-        "value" : 8,
-        "output" : {"type" : "energy", "qty" : 2},
-        "inputs" : [{"type" : "oil", "qty" : 1}]
-    },
-    {
         "value" : 10,
         "output" : {"type" : "timber", "qty" : 2}
     },
@@ -57,7 +52,7 @@
         "output" : {"type" : "iron ore", "qty" : 2}
     },
     {
-        "value" : 16,
+        "value" : 8,
         "output" : {"type" : "energy", "qty" : 3},
         "inputs" : [{"type" : "oil", "qty" : 1}]
     },
