@@ -61,7 +61,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
     
     fileprivate func findNextBidder() {
         guard let nonNilHighestCurrentBid = highestCurrentBid else {
-            print("This shouldn't happen")
+            powerCrudeHandleError(description: "Failed to find next bidder")
             exit(-1)
         }
         

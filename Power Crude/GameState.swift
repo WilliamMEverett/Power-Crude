@@ -148,12 +148,13 @@ class GameState: NSObject {
         var totalPriceChange = 0
         commodities.keys.forEach {
             guard let price = commodityMarket[$0]?.totalPriceForBuying(qtyBought: commodities[$0]!) else {
+                powerCrudeHandleError(description: nil)
                 exit(-1)
             }
             totalPriceChange -= price
             let newQ = (players[player]?.commodities[$0] ?? 0) + commodities[$0]!
             if (newQ < 0) {
-                exit(-1)
+                powerCrudeHandleError(description: nil)
             }
             else if (newQ == 0) {
                 players[player]?.commodities.removeValue(forKey: $0)
@@ -163,14 +164,14 @@ class GameState: NSObject {
             }
             let newMarketQ = (commodityMarket[$0]?.qty ?? 0) - commodities[$0]!
             if (newMarketQ < 0) {
-                exit(-1)
+                powerCrudeHandleError(description: nil)
             }
             commodityMarket[$0]?.qty = newMarketQ
         }
         
         let newMoney = (players[player]?.money ?? 0) + totalPriceChange
         if (newMoney < 0) {
-            exit(-1)
+            powerCrudeHandleError(description: nil)
         }
         players[player]?.money = newMoney
         

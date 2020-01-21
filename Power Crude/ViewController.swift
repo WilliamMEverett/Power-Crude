@@ -25,8 +25,7 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
 
         gameState = try? GameState(numberOfPlayers: 4)
         if gameState == nil {
-            NSLog("Failed to initialize game state")
-            exit(-1)
+            powerCrudeHandleError(description: "Failed to initialize game state")
         }
         gameState!.prepareForPhase()
         
@@ -70,7 +69,17 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
             return
         }
         
+        let startsStage1 = (gameState?.stage ?? 0) == 1
+        
         gameState?.finishPhase()
+        
+        if startsStage1 && (gameState?.stage == 2) {
+            let alert = NSAlert()
+            alert.informativeText = "Stage 2 has begun"
+            alert.alertStyle = .informational
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
         
         gameState!.prepareForPhase()
         

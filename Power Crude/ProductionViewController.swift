@@ -45,7 +45,7 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
                 currentPlayer = gameState!.playerOrder[index + 1]
             }
             else {
-                exit(-1)
+                powerCrudeHandleError(description: "Failed to find next player in production phase")
             }
         }
         

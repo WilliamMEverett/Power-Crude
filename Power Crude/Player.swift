@@ -110,9 +110,12 @@ class Player: NSObject {
                 
                 $0.inputs.forEach { (inpAny) in
                     if let inpCom = inpAny as? CommodityQty {
+                        if inpCom.type == .energy {
+                            return
+                        }
                         let newQty = (finalCommodities[inpCom.type] ?? 0) - inpCom.qty
                         if newQty < 0 {
-                            exit(-1)
+                            powerCrudeHandleError(description: nil)
                         }
                         else if newQty == 0 {
                             finalCommodities.removeValue(forKey: inpCom.type)
@@ -131,11 +134,11 @@ class Player: NSObject {
                                 }
                             }
                             else {
-                                exit(-1)
+                                powerCrudeHandleError(description: nil)
                             }
                         }
                         if (!requirementSatisfied) {
-                            exit(-1)
+                            powerCrudeHandleError(description: nil)
                         }
                     }
                 }

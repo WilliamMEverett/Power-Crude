@@ -22,6 +22,7 @@
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
 		D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */; };
+		D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */; };
 		D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596923CBCA19008D2C7A /* MarketViewController.swift */; };
 		D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */; };
 		D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */; };
@@ -72,6 +73,7 @@
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
 		D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCollectionViewItem.xib; sourceTree = "<group>"; };
+		D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		D9F3596923CBCA19008D2C7A /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityMarketViewItem.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				D966549823D37712002E9C20 /* AssetSelectionViewController.xib */,
 				D9F716DD23C2D12700442437 /* Assets.xcassets */,
 				D9F716DF23C2D12700442437 /* Main.storyboard */,
+				D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */,
 				D9F716E223C2D12700442437 /* Info.plist */,
 				D9F716E323C2D12700442437 /* Power_Crude.entitlements */,
 				D9F7170523C2D1F300442437 /* Model */,
@@ -363,6 +366,7 @@
 				D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */,
 				D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */,
 				D9F7170923C2D26700442437 /* Asset.swift in Sources */,
+				D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */,
 				D966549923D37712002E9C20 /* AssetSelectionViewController.swift in Sources */,
 				D9F7170A23C2D26700442437 /* Commodities.swift in Sources */,
 				D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */,

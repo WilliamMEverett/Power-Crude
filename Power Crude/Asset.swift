@@ -158,12 +158,14 @@ struct Asset : CustomStringConvertible, Equatable {
                         return (stockpile[comOptIn.type] ?? 0) >= comOptIn.qty
                     }
                     else {
-                        exit(-1)
+                        powerCrudeHandleError(description: nil)
+                        return false
                     }
                 }
             }
             else {
-                exit(-1)
+                powerCrudeHandleError(description: nil)
+                return false
             }
         }
         
