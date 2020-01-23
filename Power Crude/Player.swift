@@ -171,25 +171,22 @@ class Player: NSObject {
             
         }).forEach( { refAsset in
             
-            refAsset.inputs.forEach { (inp) in
-                if let comInp = inp as? CommodityQty {
-                    if comInp.type.isVirtualCommodity() {
+            refAsset.inputs.forEach { (assetInp) in
+                if assetInp.inp.qty > 0 {
+                    if assetInp.inp.type.isVirtualCommodity() {
                         return
                     }
-                    let existingAmount = stockpile[comInp.type] ?? 0
-                    if existingAmount >= comInp.qty {
-                        stockpile[comInp.type] = existingAmount - comInp.qty
+                    let existingAmount = stockpile[assetInp.inp.type] ?? 0
+                    if existingAmount >= assetInp.inp.qty {
+                        stockpile[assetInp.inp.type] = existingAmount - assetInp.inp.qty
                     } else {
-                        stockpile[comInp.type] = 0
-                        res[comInp.type] = (res[comInp.type] ?? 0) + comInp.qty - existingAmount
+                        stockpile[assetInp.inp.type] = 0
+                        res[assetInp.inp.type] = (res[assetInp.inp.type] ?? 0) + assetInp.inp.qty - existingAmount
                     }
                 }
-                else if let comArray = inp as? [Any] {
+                else if assetInp.choices.count > 0 {
                     var fulfilledRequirement = false
-                    for tempComInp in comArray {
-                        guard let chooseComInp = tempComInp as? CommodityQty else {
-                            continue
-                        }
+                    for chooseComInp in assetInp.choices {
                         let existingAmount = stockpile[chooseComInp.type] ?? 0
                         if existingAmount >= chooseComInp.qty {
                             stockpile[chooseComInp.type] = existingAmount - chooseComInp.qty
@@ -198,14 +195,13 @@ class Player: NSObject {
                         }
                     }
                     if !fulfilledRequirement {
-                        if let req = comArray.last as? CommodityQty {
-                            let existingAmount = stockpile[req.type] ?? 0
-                            if existingAmount >= req.qty {
-                                stockpile[req.type] = existingAmount - req.qty
-                            } else {
-                                stockpile[req.type] = 0
-                                res[req.type] = (res[req.type] ?? 0) + req.qty - existingAmount
-                            }
+                        let req = assetInp.choices.last!
+                        let existingAmount = stockpile[req.type] ?? 0
+                        if existingAmount >= req.qty {
+                            stockpile[req.type] = existingAmount - req.qty
+                        } else {
+                            stockpile[req.type] = 0
+                            res[req.type] = (res[req.type] ?? 0) + req.qty - existingAmount
                         }
                     }
                 }
