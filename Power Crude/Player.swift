@@ -109,32 +109,28 @@ class Player: NSObject {
                 }
                 
                 $0.inputs.forEach { (inpAny) in
-                    if let inpCom = inpAny as? CommodityQty {
-                        if inpCom.type == .energy {
+                    if inpAny.inp.qty > 0 {
+                        if inpAny.inp.type == .energy {
                             return
                         }
-                        let newQty = (finalCommodities[inpCom.type] ?? 0) - inpCom.qty
+                        let newQty = (finalCommodities[inpAny.inp.type] ?? 0) - inpAny.inp.qty
                         if newQty < 0 {
                             powerCrudeHandleError(description: nil)
                         }
                         else if newQty == 0 {
-                            finalCommodities.removeValue(forKey: inpCom.type)
+                            finalCommodities.removeValue(forKey: inpAny.inp.type)
                         }
                         else {
-                            finalCommodities[inpCom.type] = newQty
+                            finalCommodities[inpAny.inp.type] = newQty
                         }
                     }
-                    else if let inpArray = inpAny as? [Any] {
+                    else if inpAny.choices.count > 0 {
                         var requirementSatisfied = false
-                        inpArray.forEach { (optAny) in
-                            if let optCom = optAny as? CommodityQty {
-                                if !requirementSatisfied && (finalCommodities[optCom.type] ?? 0) >= optCom.qty {
-                                    requirementSatisfied = true
-                                    finalCommodities[optCom.type] = (finalCommodities[optCom.type] ?? 0) - optCom.qty
-                                }
-                            }
-                            else {
-                                powerCrudeHandleError(description: nil)
+                        inpAny.choices.reversed().forEach { (optCom) in
+                            
+                            if !requirementSatisfied && (finalCommodities[optCom.type] ?? 0) >= optCom.qty {
+                                requirementSatisfied = true
+                                finalCommodities[optCom.type] = (finalCommodities[optCom.type] ?? 0) - optCom.qty
                             }
                         }
                         if (!requirementSatisfied) {
