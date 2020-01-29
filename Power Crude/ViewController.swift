@@ -91,8 +91,7 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
         case .Market:
             installNewPhaseController(phaseController: MarketViewController())
         case .Events:
-            print("\(String(describing: gameState!.phase)) not implemented")
-            installNewPhaseController(phaseController: nil)
+            installNewPhaseController(phaseController: EventViewController())
         }
     }
 }

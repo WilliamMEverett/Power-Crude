@@ -1,0 +1,195 @@
+[
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "bauxite"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "lumber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "steel"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "plastic"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 2,
+            "type" : "aluminum"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "bauxite"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "lumber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "steel"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "plastic"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -2,
+            "type" : "aluminum"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "bauxite"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "lumber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "steel"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "plastic"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 5,
+            "type" : "aluminum"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "bauxite"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "lumber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "steel"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "plastic"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -5,
+            "type" : "aluminum"
+        }
+    }
+
+]

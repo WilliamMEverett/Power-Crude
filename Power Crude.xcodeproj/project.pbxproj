@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		D9294F0723C96E77000E3486 /* InformationSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */; };
 		D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */; };
+		D94427F323E129B700C1E51D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94427F223E129B700C1E51D /* Event.swift */; };
+		D94427F523E12D9E00C1E51D /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = D94427F423E12D9E00C1E51D /* events.json */; };
+		D94427F823E1306400C1E51D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94427F623E1306400C1E51D /* EventViewController.swift */; };
+		D94427F923E1306400C1E51D /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94427F723E1306400C1E51D /* EventViewController.xib */; };
 		D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */; };
 		D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D961D5CC23CA7B33005A7B4C /* ProductionViewController.swift */; };
 		D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */; };
@@ -61,6 +65,10 @@
 /* Begin PBXFileReference section */
 		D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSidebarViewController.swift; sourceTree = "<group>"; };
 		D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationSidebarViewController.xib; sourceTree = "<group>"; };
+		D94427F223E129B700C1E51D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D94427F423E12D9E00C1E51D /* events.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = events.json; path = "Power Crude/events.json"; sourceTree = SOURCE_ROOT; };
+		D94427F623E1306400C1E51D /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		D94427F723E1306400C1E51D /* EventViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 		D961D5CA23CA4C69005A7B4C /* PhaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewController.swift; sourceTree = "<group>"; };
 		D961D5CC23CA7B33005A7B4C /* ProductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionViewController.swift; sourceTree = "<group>"; };
 		D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductionViewController.xib; sourceTree = "<group>"; };
@@ -168,6 +176,8 @@
 				D961D5CD23CA7B33005A7B4C /* ProductionViewController.xib */,
 				D9F3596923CBCA19008D2C7A /* MarketViewController.swift */,
 				D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */,
+				D94427F623E1306400C1E51D /* EventViewController.swift */,
+				D94427F723E1306400C1E51D /* EventViewController.xib */,
 				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
 				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
 				D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */,
@@ -213,6 +223,7 @@
 				D961D5D223CAC5A7005A7B4C /* Market.swift */,
 				D9F7170F23C2D39D00442437 /* GameState.swift */,
 				D9F792B923C5789C0047A47D /* Player.swift */,
+				D94427F223E129B700C1E51D /* Event.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -222,6 +233,7 @@
 			children = (
 				D9F7170D23C2D2CE00442437 /* Assets.json */,
 				D961D5D023CAC1E6005A7B4C /* markets.json */,
+				D94427F423E12D9E00C1E51D /* events.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -335,8 +347,10 @@
 				D9F7170E23C2D2CE00442437 /* Assets.json in Resources */,
 				D961D5D123CAC1E6005A7B4C /* markets.json in Resources */,
 				D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */,
+				D94427F923E1306400C1E51D /* EventViewController.xib in Resources */,
 				D9F3597023CBCCAD008D2C7A /* CommodityMarketViewItem.xib in Resources */,
 				D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */,
+				D94427F523E12D9E00C1E51D /* events.json in Resources */,
 				D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */,
 				D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
@@ -371,11 +385,13 @@
 				D9F7170923C2D26700442437 /* Asset.swift in Sources */,
 				D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */,
 				D966549923D37712002E9C20 /* AssetSelectionViewController.swift in Sources */,
+				D94427F823E1306400C1E51D /* EventViewController.swift in Sources */,
 				D9F7170A23C2D26700442437 /* Commodities.swift in Sources */,
 				D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */,
 				D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */,
 				D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */,
 				D9F7171023C2D39D00442437 /* GameState.swift in Sources */,
+				D94427F323E129B700C1E51D /* Event.swift in Sources */,
 				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,
 				D966549D23D3B5C2002E9C20 /* InformationBottomViewController.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,

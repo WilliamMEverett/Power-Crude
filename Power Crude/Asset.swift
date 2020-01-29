@@ -51,7 +51,7 @@ struct CommodityQty : CustomStringConvertible, Equatable {
         }
         type = outputTypeEnum
         
-        guard let outputQty = dataIn["qty"] as? Int, outputQty > 0 else {
+        guard let outputQty = dataIn["qty"] as? Int else {
             throw NSError()
         }
         qty = outputQty
@@ -84,6 +84,9 @@ struct AssetInputType : CustomStringConvertible, Equatable {
         do {
             if let dict = dataIn as? [String:Any] {
                 inp = try CommodityQty(dict)
+                if inp.qty <= 0 {
+                    throw AssetInitializationError.invalidInputs
+                }
             }
             else if let ar = dataIn as? [Any] {
                 inp = CommodityQty(type: .timber, qty: 0)
@@ -141,7 +144,7 @@ struct Asset : CustomStringConvertible, Equatable {
         guard let ot = dataIn["output"] as? [String:Any] else {
             throw AssetInitializationError.invalidOutput
         }
-        guard let parsedOt = try? CommodityQty(ot) else {
+        guard let parsedOt = try? CommodityQty(ot), parsedOt.qty > 0 else {
             throw AssetInitializationError.invalidOutput
         }
         output = parsedOt
