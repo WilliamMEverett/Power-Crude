@@ -23,9 +23,11 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gameState = try? GameState(numberOfPlayers: 4)
-        if gameState == nil {
-            powerCrudeHandleError(description: "Failed to initialize game state")
+        do {
+           gameState = try GameState(numberOfPlayers: 4)
+        }
+        catch {
+            powerCrudeHandleError(description: "Failed to initialize game state: \(error.localizedDescription)")
         }
         gameState!.prepareForPhase()
         

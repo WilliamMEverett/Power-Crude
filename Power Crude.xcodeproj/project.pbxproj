@@ -28,6 +28,8 @@
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
 		D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */; };
 		D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */; };
+		D9BCA01423E3D7F200E4F6EE /* Economy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BCA01323E3D7F200E4F6EE /* Economy.swift */; };
+		D9BCA01623E3DC5400E4F6EE /* economies.json in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA01523E3DC5400E4F6EE /* economies.json */; };
 		D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596923CBCA19008D2C7A /* MarketViewController.swift */; };
 		D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */; };
 		D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */; };
@@ -84,6 +86,8 @@
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
 		D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCollectionViewItem.xib; sourceTree = "<group>"; };
 		D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		D9BCA01323E3D7F200E4F6EE /* Economy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economy.swift; sourceTree = "<group>"; };
+		D9BCA01523E3DC5400E4F6EE /* economies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = economies.json; path = "Power Crude/economies.json"; sourceTree = SOURCE_ROOT; };
 		D9F3596923CBCA19008D2C7A /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityMarketViewItem.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				D9F7170F23C2D39D00442437 /* GameState.swift */,
 				D9F792B923C5789C0047A47D /* Player.swift */,
 				D94427F223E129B700C1E51D /* Event.swift */,
+				D9BCA01323E3D7F200E4F6EE /* Economy.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				D9F7170D23C2D2CE00442437 /* Assets.json */,
 				D961D5D023CAC1E6005A7B4C /* markets.json */,
 				D94427F423E12D9E00C1E51D /* events.json */,
+				D9BCA01523E3DC5400E4F6EE /* economies.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
 				D966549E23D3B5C2002E9C20 /* InformationBottomViewController.xib in Resources */,
+				D9BCA01623E3DC5400E4F6EE /* economies.json in Resources */,
 				D9F716E123C2D12700442437 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +397,7 @@
 				D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */,
 				D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */,
 				D961D5CE23CA7B33005A7B4C /* ProductionViewController.swift in Sources */,
+				D9BCA01423E3D7F200E4F6EE /* Economy.swift in Sources */,
 				D9F7171023C2D39D00442437 /* GameState.swift in Sources */,
 				D94427F323E129B700C1E51D /* Event.swift in Sources */,
 				D9F792BA23C5789C0047A47D /* Player.swift in Sources */,

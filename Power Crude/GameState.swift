@@ -34,6 +34,9 @@ class GameState: NSObject {
     var playerOrder = [Int]()
     var players : [Int:Player] = [:]
     
+    var economies : [Int:Economy]!
+    var economyLevel : Int = 0
+    
     var lowestAssetInMarket : Asset? = nil
     
     init(numberOfPlayers : Int) throws {
@@ -60,6 +63,9 @@ class GameState: NSObject {
             $0[$1] = Player(number:$1)
         })
         
+        economies = try loadEconomies()
+        economyLevel = 0
+        
         var deckEmpty = false
         while auctionMarket.count < 6 && !deckEmpty {
             deckEmpty = drawAssetForMarket(regularMarket: true)
@@ -68,11 +74,11 @@ class GameState: NSObject {
     }
     
     var currentRetailPriceEnergy : Int {
-        return 8
+        return economies[economyLevel]!.energyPrice
     }
     
     var currentWholesalePriceEnergy : Int {
-        return 4
+        return (economies[economyLevel]!.energyPrice)/2
     }
     
     var nextEvent : Event {
@@ -373,6 +379,43 @@ class GameState: NSObject {
         }
         
         return mark
+    }
+    
+    fileprivate func loadEconomies() throws -> [Int:Economy] {
+        guard let filepath = Bundle.main.path(forResource: "economies", ofType: "json") else {
+            throw NSError(domain: "Error loading file", code: 1, userInfo: nil)
+        }
+        guard let contents = try? String(contentsOfFile: filepath) else {
+            throw NSError(domain: "Error loading file", code: 1, userInfo: nil)
+        }
+        
+        var json : Any? = nil
+        do {
+            json = try JSONSerialization.jsonObject(with: contents.data(using: .utf8)!, options: [])
+        } catch {
+            NSLog("JSON Error: \(error)");
+        }
+        guard let jsonDict = json as? [String:Any] else {
+            throw NSError(domain: "JSON was not dict", code: 1, userInfo: nil)
+        }
+        
+        var res : [Int:Economy] = [:]
+        
+        try jsonDict.forEach { (key: String, value: Any) in
+            guard let lev = Int(key) else {
+                throw NSError(domain: "Invalid Key for Economy Level: \(key)", code: 1, userInfo: nil)
+            }
+            if res.keys.contains(lev) {
+                throw NSError(domain: "Duplicate key for Economy: \(lev)", code: 1, userInfo: nil)
+            }
+            guard let v = value as? [String:Any] else {
+                throw NSError(domain: "Invalid value for Economy Level: \(lev)", code: 1, userInfo: nil)
+            }
+            let econ = try Economy(dataIn: v, level: lev)
+            res[lev] = econ
+        }
+        
+        return res
     }
 
 }

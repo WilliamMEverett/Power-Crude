@@ -1,0 +1,79 @@
+{
+    "-4" : {
+        "energy":3,
+        "change" : {
+            "goods" : -2,
+            "refined" : 2,
+            "raw" : 2
+        },
+        "steady" : {
+            "refined" : 1
+        }
+    },
+    "-3" : {
+        "energy":4,
+        "change" : {
+            "goods" : -1,
+            "refined" : 2,
+            "raw" : 2
+        }
+    },
+    "-2" : {
+        "energy":5,
+        "change" : {
+            "refined" : 2,
+            "raw" : 1
+        }
+    },
+    "-1" : {
+        "energy":7,
+        "change" : {
+            "goods" : 1,
+            "refined" : 2
+        }
+    },
+    "0" : {
+        "energy":8,
+        "change" : {
+            "goods" : 2
+        }
+    },
+    "1" : {
+        "energy":9,
+        "change" : {
+            "goods" : 3,
+            "refined" : -2
+        }
+    },
+    "2" : {
+        "energy":10,
+        "change" : {
+            "goods" : 4,
+            "refined" : -2,
+            "raw" : -1
+        }
+    },
+    "3" : {
+        "energy":11,
+        "change" : {
+            "goods" : 5,
+            "refined" : -2,
+            "raw" : -2
+        },
+        "steady" : {
+            "goods" : 1
+        }
+    },
+    "4" : {
+        "energy":12,
+        "change" : {
+            "goods" : 6,
+            "refined" : -2,
+            "raw" : -2
+        },
+        "steady" : {
+            "goods" : 1,
+            "refined" : -1
+        }
+    }
+}
