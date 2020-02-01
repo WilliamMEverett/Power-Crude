@@ -1,5 +1,6 @@
 [
     {
+        "economy" : 1,
         "market" : {
             "qty" : 2,
             "type" : "timber"
@@ -12,30 +13,35 @@
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : 2,
             "type" : "oil"
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : 2,
             "type" : "bauxite"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : 2,
             "type" : "lumber"
         }
     },
     {
+        "economy" : 2,
         "market" : {
             "qty" : 2,
             "type" : "steel"
         }
     },
     {
+        "economy" : -2,
         "market" : {
             "qty" : 2,
             "type" : "plastic"
@@ -48,12 +54,14 @@
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : -2,
             "type" : "timber"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -2,
             "type" : "iron ore"
@@ -66,24 +74,28 @@
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : -2,
             "type" : "bauxite"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -2,
             "type" : "lumber"
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : -2,
             "type" : "steel"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -2,
             "type" : "plastic"
@@ -96,24 +108,28 @@
         }
     },
     {
+        "economy" : 2,
         "market" : {
             "qty" : 5,
             "type" : "timber"
         }
     },
     {
+        "economy" : -2,
         "market" : {
             "qty" : 5,
             "type" : "iron ore"
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : 5,
             "type" : "oil"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : 5,
             "type" : "bauxite"
@@ -126,24 +142,28 @@
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : 5,
             "type" : "steel"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : 5,
             "type" : "plastic"
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : 5,
             "type" : "aluminum"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -5,
             "type" : "timber"
@@ -156,12 +176,14 @@
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : -5,
             "type" : "oil"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -5,
             "type" : "bauxite"
@@ -174,12 +196,14 @@
         }
     },
     {
+        "economy" : 1,
         "market" : {
             "qty" : -5,
             "type" : "steel"
         }
     },
     {
+        "economy" : -1,
         "market" : {
             "qty" : -5,
             "type" : "plastic"
@@ -189,6 +213,54 @@
         "market" : {
             "qty" : -5,
             "type" : "aluminum"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 4,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 4,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 4,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : 4,
+            "type" : "bauxite"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -4,
+            "type" : "timber"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -4,
+            "type" : "iron ore"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -4,
+            "type" : "oil"
+        }
+    },
+    {
+        "market" : {
+            "qty" : -4,
+            "type" : "bauxite"
         }
     }
 

@@ -182,7 +182,55 @@ class GameState: NSObject {
             commodityMarket[ev.marketChange.type] = mk
         }
         
-        //TODO: deal with economy change
+        if ev.economyChange != 0 {
+            economyLevel = nextEconomyLevelWithChange(ev.economyChange)
+            
+            applyChangeEffect(economies[economyLevel]!.changeEffect)
+            
+        }
+        else {
+            applyChangeEffect(economies[economyLevel]!.steadyEffect)
+        }
+    }
+    
+    fileprivate func applyChangeEffect(_ changeEffect : EconomyChangeDescription) {
+        if stage == 2 && changeEffect.goods != 0 {
+            let newPrice = ((commodityMarket[.goods]?.currentSellPrice) ?? 0) + changeEffect.goods
+            
+            if newPrice > (commodityMarket[.goods]?.currentSellPrice ?? 0) {
+                while newPrice > (commodityMarket[.goods]?.currentSellPrice ?? 0) && commodityMarket[.goods]!.qty > 0 {
+                    commodityMarket[.goods]!.qty -= 1
+                }
+            }
+            else if newPrice < (commodityMarket[.goods]?.currentSellPrice ?? 0) {
+                while newPrice < (commodityMarket[.goods]?.currentSellPrice ?? 0) && commodityMarket[.goods]!.remainingSpaces > 0 {
+                    commodityMarket[.goods]!.qty += 1
+                }
+            }
+        }
+        if changeEffect.raw != 0 {
+            let rawKeys = commodityMarket.keys.filter({$0.isRawCommodity()})
+            
+            rawKeys.forEach { (c) in
+                let newQ = min(max(commodityMarket[c]!.qty + changeEffect.raw, 0), commodityMarket[c]!.prices.count)
+                commodityMarket[c]!.qty = newQ
+            }
+        }
+        if changeEffect.refined != 0 {
+            let refinedKeys = commodityMarket.keys.filter({$0.isRefinedCommodity()})
+            
+            refinedKeys.forEach { (c) in
+                let newQ = min(max(commodityMarket[c]!.qty + changeEffect.refined, 0), commodityMarket[c]!.prices.count)
+                commodityMarket[c]!.qty = newQ
+            }
+        }
+    }
+    
+    func nextEconomyLevelWithChange(_ change : Int) -> Int {
+        let maxEconomy = economies.keys.max()!
+        let minEconomy = economies.keys.min()!
+        
+        return min(max(minEconomy, (economyLevel + change)), maxEconomy)
     }
     
     func buyCommodities(player: Int, commodities:[Commodity:Int]) {

@@ -46,6 +46,10 @@ struct Market {
         
     }
     
+    var remainingSpaces : Int {
+        return prices.count - qty
+    }
+    
     var currentBuyPrice : Int? {
         if type.isFinishedCommodity() {
             return nil

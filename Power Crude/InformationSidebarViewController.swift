@@ -11,6 +11,10 @@ import Cocoa
 class InformationSidebarViewController: NSViewController {
 
     @IBOutlet weak var playerTextView : NSTextView!
+    @IBOutlet weak var economyLevelTextField : NSTextField!
+    @IBOutlet weak var energyPriceTextField : NSTextField!
+    @IBOutlet weak var economyChangeTextField : NSTextField!
+    
     var notificationObject : NSObjectProtocol? = nil
     
     var gameState : GameState? = nil {
@@ -40,6 +44,9 @@ class InformationSidebarViewController: NSViewController {
     func refreshPlayerInformation() {
         guard let nonNilGameState = gameState else {
             playerTextView.string = ""
+            economyChangeTextField.stringValue = ""
+            economyLevelTextField.stringValue = ""
+            energyPriceTextField.stringValue = ""
             return
         }
         
@@ -61,6 +68,11 @@ class InformationSidebarViewController: NSViewController {
             
         })
         playerTextView.textStorage?.setAttributedString(displayString)
+        
+        economyLevelTextField.stringValue = "\(nonNilGameState.economyLevel)"
+        energyPriceTextField.stringValue = "\(nonNilGameState.currentRetailPriceEnergy)"
+        
+        economyChangeTextField.stringValue = nonNilGameState.economies[nonNilGameState.economyLevel]!.changeDescriptionString
     }
     
 }
