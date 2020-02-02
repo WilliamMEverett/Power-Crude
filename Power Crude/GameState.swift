@@ -182,9 +182,9 @@ class GameState: NSObject {
             commodityMarket[ev.marketChange.type] = mk
         }
         
-        if ev.economyChange != 0 {
-            economyLevel = nextEconomyLevelWithChange(ev.economyChange)
-            
+        let oldLevel = economyLevel
+        economyLevel = nextEconomyLevelWithChange(ev.economyChange)
+        if oldLevel != economyLevel {
             applyChangeEffect(economies[economyLevel]!.changeEffect)
             
         }

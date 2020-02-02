@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EventViewController" customModule="Power_Crude" customModuleProvider="target">
             <connections>
+                <outlet property="economyEffectTextField" destination="hpO-6Y-NQD" id="a5q-jD-t9j"/>
                 <outlet property="economyTextField" destination="6ZF-Mg-kWO" id="U5W-Fa-XeT"/>
                 <outlet property="mainEventTextField" destination="p9o-Ag-gKw" id="04u-Uq-REr"/>
                 <outlet property="nextButton" destination="h1Z-oo-nmk" id="tCa-N9-Az0"/>
@@ -40,9 +41,18 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ZF-Mg-kWO">
-                    <rect key="frame" x="133" y="115" width="507" height="25"/>
+                    <rect key="frame" x="133" y="200" width="507" height="25"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="zgz-Ax-sUh">
+                        <font key="font" metaFont="system" size="15"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="hpO-6Y-NQD">
+                    <rect key="frame" x="138" y="68" width="520" height="124"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" selectable="YES" alignment="center" title="Multiline Label" id="f5R-Qs-HBd">
                         <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

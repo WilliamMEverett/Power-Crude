@@ -12,6 +12,37 @@ struct EconomyChangeDescription : Equatable {
     var raw : Int
     var refined : Int
     var goods : Int
+    
+    var isEmpty : Bool {
+        raw == 0 && refined == 0 && goods == 0
+    }
+    
+    var description : String {
+        
+        var strArry : [String] = []
+        
+        if (goods != 0) {
+            var tempString : String = "Goods "
+            tempString += (goods > 0 ? "+" : "-")
+            tempString += "$"
+            tempString += "\(abs(goods))"
+            strArry.append(tempString)
+        }
+        if (refined != 0) {
+            var tempString : String = "Refined "
+            tempString += (refined > 0 ? "+" : "-")
+            tempString += "\(abs(refined))"
+            strArry.append(tempString)
+        }
+        if (raw != 0) {
+            var tempString : String = "Raw "
+            tempString += (raw > 0 ? "+" : "-")
+            tempString += "\(abs(raw))"
+            strArry.append(tempString)
+        }
+        
+        return strArry.joined(separator: ", ")
+    }
 }
 
 struct Economy : Equatable {
@@ -45,50 +76,20 @@ struct Economy : Equatable {
     var changeDescriptionString : String {
         var tempString = ""
         
-        if (changeEffect.goods != 0 || changeEffect.raw != 0 || changeEffect.refined != 0) {
-            tempString += "On start:"
-        }
-        if (changeEffect.goods != 0) {
-            tempString += " Goods "
-            tempString += (changeEffect.goods > 0 ? "+" : "-")
-            tempString += "$"
-            tempString += "\(abs(changeEffect.goods))"
-        }
-        if (changeEffect.refined != 0) {
-            tempString += " Refined "
-            tempString += (changeEffect.refined > 0 ? "+" : "-")
-            tempString += "\(abs(changeEffect.refined))"
-        }
-        if (changeEffect.raw != 0) {
-            tempString += " Raw "
-            tempString += (changeEffect.raw > 0 ? "+" : "-")
-            tempString += "\(abs(changeEffect.raw))"
+        if (!changeEffect.isEmpty) {
+            tempString += "On start: "
+            tempString += changeEffect.description
         }
         
-        if (steadyEffect.goods != 0 || steadyEffect.raw != 0 || steadyEffect.refined != 0) {
+        if (!steadyEffect.isEmpty) {
             if !tempString.isEmpty {
                 tempString += "\n"
             }
-            tempString += "Following turns:"
-        }
-        if (steadyEffect.goods != 0) {
-            tempString += " Goods "
-            tempString += (steadyEffect.goods > 0 ? "+" : "-")
-            tempString += "$"
-            tempString += "\(abs(steadyEffect.goods))"
-        }
-        if (steadyEffect.refined != 0) {
-            tempString += " Refined "
-            tempString += (steadyEffect.refined > 0 ? "+" : "-")
-            tempString += "\(abs(steadyEffect.refined))"
-        }
-        if (steadyEffect.raw != 0) {
-            tempString += " Raw "
-            tempString += (steadyEffect.raw > 0 ? "+" : "-")
-            tempString += "\(abs(steadyEffect.raw))"
+            tempString += "Following turns: "
+            tempString += steadyEffect.description
         }
 
-        
         return tempString
     }
+    
 }

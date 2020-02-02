@@ -15,34 +15,37 @@
         "change" : {
             "goods" : -1,
             "refined" : 2,
-            "raw" : 2
+            "raw" : 1
         }
     },
     "-2" : {
         "energy":5,
         "change" : {
-            "refined" : 2,
-            "raw" : 1
+            "refined" : 1
         }
     },
     "-1" : {
         "energy":7,
         "change" : {
             "goods" : 1,
-            "refined" : 2
         }
     },
     "0" : {
         "energy":8,
         "change" : {
-            "goods" : 2
+            "goods" : 2,
+            "refined" : -1
         }
     },
     "1" : {
         "energy":9,
         "change" : {
             "goods" : 3,
-            "refined" : -2
+            "refined" : -2,
+            "raw" : -1
+        },
+        "steady" : {
+            "refined" : -1
         }
     },
     "2" : {
@@ -50,6 +53,10 @@
         "change" : {
             "goods" : 4,
             "refined" : -2,
+            "raw" : -2
+        },
+        "steady" : {
+            "refined" : -1,
             "raw" : -1
         }
     },
@@ -57,23 +64,26 @@
         "energy":11,
         "change" : {
             "goods" : 5,
-            "refined" : -2,
-            "raw" : -2
+            "refined" : -4,
+            "raw" : -3
         },
         "steady" : {
-            "goods" : 1
+            "goods" : 1,
+            "refined" : -2,
+            "raw" : -2
         }
     },
     "4" : {
         "energy":12,
         "change" : {
             "goods" : 6,
-            "refined" : -2,
-            "raw" : -2
+            "refined" : -4,
+            "raw" : -4
         },
         "steady" : {
             "goods" : 1,
-            "refined" : -1
+            "refined" : -3,
+            "raw" : -2
         }
     }
 }

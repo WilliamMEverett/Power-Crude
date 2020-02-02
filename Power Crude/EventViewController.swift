@@ -13,14 +13,28 @@ class EventViewController: PhaseViewController {
     @IBOutlet var nextButton : NSButton!
     @IBOutlet var mainEventTextField : NSTextField!
     @IBOutlet var economyTextField : NSTextField!
+    @IBOutlet var economyEffectTextField : NSTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ev = gameState?.nextEvent
+        guard let ev = gameState?.nextEvent else {
+            NSLog("No Next Event!")
+            return
+        }
         
-        mainEventTextField.stringValue = (ev?.mainEventDescription) ?? ""
-        economyTextField.stringValue = (ev?.economyDescription) ?? ""
+        mainEventTextField.stringValue = (ev.mainEventDescription)
+        economyTextField.stringValue = (ev.economyDescription)
+        
+        let nextEconomyLevel = gameState!.nextEconomyLevelWithChange(ev.economyChange)
+        let nextEconomy = gameState!.economies[nextEconomyLevel]!
+        
+        if nextEconomyLevel == gameState!.economyLevel {
+            economyEffectTextField.stringValue = nextEconomy.steadyEffect.description
+        }
+        else {
+            economyEffectTextField.stringValue = nextEconomy.changeEffect.description
+        }
     }
     
     @IBAction func nextButtonPressed(_ sender: NSButton) {
