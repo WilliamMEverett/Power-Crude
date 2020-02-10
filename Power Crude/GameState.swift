@@ -9,7 +9,7 @@
 import Cocoa
 
 enum GameStatePhase {
-    case Auction, Production, Market, Events
+    case Auction, Production, Market, Events, Finish
 }
 
 
@@ -31,6 +31,7 @@ class GameState: NSObject {
     
     var stage : Int = 1
     var movingToStage2 : Bool = false
+    var lastTurn : Bool = false
     var playerOrder = [Int]()
     var players : [Int:Player] = [:]
     
@@ -98,6 +99,10 @@ class GameState: NSObject {
     
     func prepareForPhase() {
         if (phase == .Auction) {
+            if endGameTriggered() {
+                lastTurn = true
+            }
+            
             if stage == 2 {
                 lowestAssetInMarket = auctionMarket.first
             }
@@ -158,7 +163,12 @@ class GameState: NSObject {
             phase = .Production
         }
         else if phase == .Production {
-            phase = .Market
+            if lastTurn {
+                phase = .Finish
+            }
+            else {
+                phase = .Market
+            }
         }
         else if phase == .Market {
             phase = .Events
@@ -171,6 +181,19 @@ class GameState: NSObject {
         }
         
         NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
+    }
+    
+    func endGameTriggered() -> Bool {
+        
+        let numPlayers3Mfg = players.values.filter({$0.numberOfManufacturingAssets >= 3}).count
+        if numPlayers3Mfg >= 1 {
+            return true
+        }
+        let numPlayers2Mfg = players.values.filter({$0.numberOfManufacturingAssets >= 2}).count
+        if numPlayers2Mfg >= 2 {
+            return true
+        }
+        return false
     }
     
     fileprivate func applyEvent(_ ev : Event) {
@@ -270,8 +293,19 @@ class GameState: NSObject {
     func produceAssets(player: Int, assets:[Asset]) {
         let result = players[player]!.getResultFromProducingAssets(assets: assets, energyBuy: currentRetailPriceEnergy, energySell: currentWholesalePriceEnergy)
         
+        players[player]!.lastGoodsProduced = 0
+        let lastGoodsStockpile = players[player]!.commodities[.goods] ?? 0
+        
         players[player]!.money = result.money
         players[player]!.commodities = result.stockpile
+        
+        let currentGoodsStockpile = players[player]!.commodities[.goods] ?? 0
+        if (currentGoodsStockpile < lastGoodsStockpile) {
+            print("This shouldn't happen. Goods stockpile went down after production for player \(player)")
+        }
+        else {
+            players[player]!.lastGoodsProduced = currentGoodsStockpile - lastGoodsStockpile
+        }
         
         NotificationCenter.default.post(name: GameState.kGameStateChangedNotification, object: self)
     }

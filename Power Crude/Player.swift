@@ -15,12 +15,18 @@ class Player: NSObject {
     var assets : [Asset] = []
     var commodities : [Commodity:Int] = [:]
     
+    var lastGoodsProduced = 0
+    
     var totalAssetValue : Int {
         return assets.reduce(0, { $0 + $1.value})
     }
     
     var hasMaximumNumberOfAssets : Bool {
         return assets.count >= 6
+    }
+    
+    var numberOfManufacturingAssets : Int {
+        return assets.filter({$0.type == .manufacturing }).count
     }
     
     init(number : Int) {

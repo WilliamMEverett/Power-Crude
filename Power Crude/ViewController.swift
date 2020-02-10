@@ -71,11 +71,11 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
             return
         }
         
-        let startsStage1 = (gameState?.stage ?? 0) == 1
+        let startsStage1 = gameState!.stage == 1
         
-        gameState?.finishPhase()
+        gameState!.finishPhase()
         
-        if startsStage1 && (gameState?.stage == 2) {
+        if startsStage1 && (gameState!.stage == 2) {
             let alert = NSAlert()
             alert.informativeText = "Stage 2 has begun"
             alert.alertStyle = .informational
@@ -87,13 +87,33 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
         
         switch gameState!.phase {
         case .Auction:
+            
+            if gameState!.lastTurn {
+                let alert = NSAlert()
+                alert.informativeText = "This is the last turn"
+                alert.alertStyle = .informational
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            }
+            
             installNewPhaseController(phaseController: AuctionViewController())
         case .Production:
+            
+            if !gameState!.lastTurn && gameState!.endGameTriggered() {
+                let alert = NSAlert()
+                alert.informativeText = "End Game Triggered. This is the second to last turn"
+                alert.alertStyle = .informational
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            }
+            
             installNewPhaseController(phaseController: ProductionViewController())
         case .Market:
             installNewPhaseController(phaseController: MarketViewController())
         case .Events:
             installNewPhaseController(phaseController: EventViewController())
+        case .Finish:
+            installNewPhaseController(phaseController: FinishViewController())
         }
     }
 }

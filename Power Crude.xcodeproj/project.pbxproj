@@ -30,6 +30,8 @@
 		D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */; };
 		D9BCA01423E3D7F200E4F6EE /* Economy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BCA01323E3D7F200E4F6EE /* Economy.swift */; };
 		D9BCA01623E3DC5400E4F6EE /* economies.json in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA01523E3DC5400E4F6EE /* economies.json */; };
+		D9C88DD323F0DEAE0081B423 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C88DD123F0DEAE0081B423 /* FinishViewController.swift */; };
+		D9C88DD423F0DEAE0081B423 /* FinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C88DD223F0DEAE0081B423 /* FinishViewController.xib */; };
 		D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596923CBCA19008D2C7A /* MarketViewController.swift */; };
 		D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */; };
 		D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */; };
@@ -88,6 +90,8 @@
 		D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		D9BCA01323E3D7F200E4F6EE /* Economy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economy.swift; sourceTree = "<group>"; };
 		D9BCA01523E3DC5400E4F6EE /* economies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = economies.json; path = "Power Crude/economies.json"; sourceTree = SOURCE_ROOT; };
+		D9C88DD123F0DEAE0081B423 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		D9C88DD223F0DEAE0081B423 /* FinishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishViewController.xib; sourceTree = "<group>"; };
 		D9F3596923CBCA19008D2C7A /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		D9F3596D23CBCCAD008D2C7A /* CommodityMarketViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityMarketViewItem.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				D9F3596A23CBCA19008D2C7A /* MarketViewController.xib */,
 				D94427F623E1306400C1E51D /* EventViewController.swift */,
 				D94427F723E1306400C1E51D /* EventViewController.xib */,
+				D9C88DD123F0DEAE0081B423 /* FinishViewController.swift */,
+				D9C88DD223F0DEAE0081B423 /* FinishViewController.xib */,
 				D9294F0523C96E77000E3486 /* InformationSidebarViewController.swift */,
 				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
 				D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */,
@@ -357,6 +363,7 @@
 				D9F3597023CBCCAD008D2C7A /* CommodityMarketViewItem.xib in Resources */,
 				D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */,
 				D94427F523E12D9E00C1E51D /* events.json in Resources */,
+				D9C88DD423F0DEAE0081B423 /* FinishViewController.xib in Resources */,
 				D961D5CF23CA7B33005A7B4C /* ProductionViewController.xib in Resources */,
 				D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */,
 				D9F716DE23C2D12700442437 /* Assets.xcassets in Resources */,
@@ -404,6 +411,7 @@
 				D966549D23D3B5C2002E9C20 /* InformationBottomViewController.swift in Sources */,
 				D9F716DC23C2D12700442437 /* ViewController.swift in Sources */,
 				D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */,
+				D9C88DD323F0DEAE0081B423 /* FinishViewController.swift in Sources */,
 				D961D5CB23CA4C69005A7B4C /* PhaseViewController.swift in Sources */,
 				D9F716DA23C2D12700442437 /* AppDelegate.swift in Sources */,
 				D961D5D323CAC5A7005A7B4C /* Market.swift in Sources */,
