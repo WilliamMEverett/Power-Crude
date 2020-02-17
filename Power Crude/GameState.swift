@@ -43,11 +43,15 @@ class GameState: NSObject {
     init(numberOfPlayers : Int) throws {
         super.init()
         
-        let assets = try loadAssets()
+        var assets = try loadAssets()
         commodityMarket = try loadMarkets()
         eventDeck = try loadEvents()
         eventDeck.shuffle()
         discardedEventDeck = []
+        
+        if numberOfPlayers <= 3 {
+            assets = assets.filter({ $0.output.type != .bauxite && $0.output.type != .aluminum && !$0.requiresCommodity(com: .bauxite) && !$0.requiresCommodity(com: .aluminum) })
+        }
         
         manufacturingAssetDeck = assets.filter() { $0.type == .manufacturing}.shuffled()
         

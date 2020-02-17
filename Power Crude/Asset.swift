@@ -210,49 +210,9 @@ struct Asset : CustomStringConvertible, Equatable {
         return (success: success, energy : energyRequired)
     }
     
-//    static func == (lhs: Asset, rhs: Asset) -> Bool {
-//        return lhs.value == rhs.value && lhs.initialOrdering == rhs.initialOrdering && lhs.description == rhs.description
-//    }
-    
-//    private func parseArrayOfNestedCommodityTypePairs(ar : [Any]) -> [Any]? {
-//        return try? ar.map({ (o) -> Any in
-//
-//            if let v = o as? [String:Any] {
-//                let p = parseCommodityTypeQuantityPair(pair: v)
-//                if p != nil {
-//                    return p!
-//                }
-//                else {
-//                    throw AssetInitializationError.invalidInputs
-//                }
-//            }
-//            else if let a = o as? [Any] {
-//                let p = parseArrayOfNestedCommodityTypePairs(ar: a)
-//                if p != nil {
-//                    return p!
-//                }
-//                else {
-//                    throw AssetInitializationError.invalidInputs
-//                }
-//            }
-//            else {
-//                throw AssetInitializationError.invalidInputs
-//            }
-//        })
-//    }
-//
-//    private func parseCommodityTypeQuantityPair(pair : [String:Any]) -> CommodityQty? {
-//        guard let outType = pair["type"] as? String else {
-//            return nil
-//        }
-//
-//        guard let outputTypeEnum = Commodity.allCases.first(where: {$0.rawValue.lowercased() == outType.lowercased()}) else {
-//            return nil
-//        }
-//        guard let outputQty = pair["qty"] as? Int, outputQty > 0 else {
-//            return nil
-//        }
-//        return CommodityQty(type:outputTypeEnum, qty:outputQty)
-//    }
+    func requiresCommodity(com : Commodity) -> Bool {
+        let count = inputs.filter({$0.inp.type == com}).count
+        return count > 0
+    }
     
 }

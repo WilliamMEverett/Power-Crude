@@ -24,7 +24,7 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
         super.viewDidLoad()
 
         do {
-           gameState = try GameState(numberOfPlayers: 4)
+           gameState = try GameState(numberOfPlayers: 3)
         }
         catch {
             powerCrudeHandleError(description: "Failed to initialize game state: \(error.localizedDescription)")
