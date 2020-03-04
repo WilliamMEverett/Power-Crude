@@ -160,6 +160,26 @@
         "inputs" : [[{"type" : "aluminum", "qty" : 1},{"type" : "plastic", "qty" : 1},{"type" : "steel", "qty" : 1},{"type" : "lumber", "qty" : 1}],{"type" : "energy", "qty" : 1}]
     },
     {
+        "value" : 60,
+        "output" : {"type" : "goods", "qty" : 4},
+        "inputs" : [{"type" : "aluminum", "qty" : 2},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 64,
+        "output" : {"type" : "goods", "qty" : 4},
+        "inputs" : [{"type" : "steel", "qty" : 2},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 70,
+        "output" : {"type" : "goods", "qty" : 4},
+        "inputs" : [{"type" : "lumber", "qty" : 2},{"type" : "energy", "qty" : 3}]
+    },
+    {
+        "value" : 75,
+        "output" : {"type" : "goods", "qty" : 3},
+        "inputs" : [[{"type" : "aluminum", "qty" : 2},{"type" : "plastic", "qty" : 2},{"type" : "steel", "qty" : 2},{"type" : "lumber", "qty" : 2}],{"type" : "energy", "qty" : 2}]
+    },
+    {
         "value" : 83,
         "output" : {"type" : "goods", "qty" : 4},
         "inputs" : [{"type" : "plastic", "qty" : 2},{"type" : "energy", "qty" : 1}]

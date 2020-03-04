@@ -29,13 +29,13 @@ class Player: NSObject {
         return assets.filter({$0.type == .manufacturing }).count
     }
     
-    init(number : Int) {
+    init(number : Int, startingCommodities : [Commodity:Int]? = nil ) {
         super.init()
         
         playerNumber = number
-        money = 50
+        money = 30
         assets = []
-        commodities = [:]
+        commodities = startingCommodities != nil ? startingCommodities! : [:]
     }
     
     var commoditiesDescription : String {

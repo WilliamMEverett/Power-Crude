@@ -64,8 +64,16 @@ class GameState: NSObject {
         auctionMarket = []
         mfgAuctionMarket = []
         playerOrder = (1...numberOfPlayers).map({$0})
+        
+        let startingCommodityTypes = Commodity.allCases.filter {
+            $0.isRawCommodity() && !$0.isVirtualCommodity() && (numberOfPlayers > 3 || $0 != .bauxite)
+        }
+        let startingCommodities = startingCommodityTypes.reduce(into: [Commodity:Int](), {
+            $0[$1] = 1
+        })
+        
         players = playerOrder.reduce(into: [Int:Player](), {
-            $0[$1] = Player(number:$1)
+            $0[$1] = Player(number:$1, startingCommodities: startingCommodities)
         })
         
         economies = try loadEconomies()
