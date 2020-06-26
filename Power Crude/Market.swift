@@ -51,9 +51,6 @@ struct Market {
     }
     
     var currentBuyPrice : Int? {
-        if type.isFinishedCommodity() {
-            return nil
-        }
         if (qty <= 0) {
             return nil
         }

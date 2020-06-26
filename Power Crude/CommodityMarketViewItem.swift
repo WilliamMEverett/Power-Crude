@@ -50,8 +50,8 @@ class CommodityMarketViewItem: NSCollectionViewItem {
             sellButton.isEnabled = false
         }
         
-        buyPriceTextField.isHidden = market!.type.isFinishedCommodity()
-        buyButton.isHidden = market!.type.isFinishedCommodity()
+//        buyPriceTextField.isHidden = market!.type.isFinishedCommodity()
+//        buyButton.isHidden = market!.type.isFinishedCommodity()
         
         let qtyBought = currentMarketQty - market!.qty
         
@@ -62,7 +62,7 @@ class CommodityMarketViewItem: NSCollectionViewItem {
             qtyChangeTextField.stringValue = "\(qtyBought)"
         }
         
-        if let buyPrice = market!.currentBuyPrice {
+        if let buyPrice = market!.currentBuyPrice, !market!.type.isFinishedCommodity() || qtyBought < 0 {
             buyPriceTextField.stringValue = "\(buyPrice)"
             buyButton.isEnabled = buyPrice <= remainingPlayerMoney
         }
