@@ -262,6 +262,22 @@
             "qty" : -4,
             "type" : "bauxite"
         }
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "lumber"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "aluminum"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "steel"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "plastic"
     }
 
 ]

@@ -23,6 +23,7 @@ class CommodityMarketViewItem: NSCollectionViewItem {
     @IBOutlet var sellButton : NSButton!
     
     weak var delegate : CommodityMarketViewItemDelegate? = nil
+    var enabled = true
     
     var market : Market? = nil {
         didSet {
@@ -80,6 +81,11 @@ class CommodityMarketViewItem: NSCollectionViewItem {
             sellButton.isEnabled = false
         }
         commodityQuantityTextField.stringValue = "\(market!.qty)"
+        
+        if !enabled {
+            sellButton.isEnabled = false
+            buyButton.isEnabled = false
+        }
     }
     
     @IBAction func buyButtonPressed(sender : NSButton) {

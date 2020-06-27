@@ -13,6 +13,7 @@ class InformationBottomViewController: NSViewController, NSTableViewDelegate, NS
     @IBOutlet weak var rawGoodsLabel : NSTextField!
     @IBOutlet weak var refinedGoodsLabel : NSTextField!
     @IBOutlet weak var finishedGoodsLabel : NSTextField!
+    @IBOutlet weak var unavailableMarketLabel : NSTextField!
     @IBOutlet weak var playerTableView : NSTableView!
     @IBOutlet weak var assetMarketTableView : NSTableView!
     
@@ -50,6 +51,7 @@ class InformationBottomViewController: NSViewController, NSTableViewDelegate, NS
             rawGoodsLabel.stringValue = ""
             refinedGoodsLabel.stringValue = ""
             finishedGoodsLabel.stringValue = ""
+            unavailableMarketLabel.stringValue = ""
             return
         }
         
@@ -86,6 +88,13 @@ class InformationBottomViewController: NSViewController, NSTableViewDelegate, NS
             return res + c.rawValue  + " " + sellPriceString + "   "
         }
         finishedGoodsLabel.stringValue = finishedCommodityString
+        
+        if let comm = nonNilGameState.unavailableCommodity {
+            unavailableMarketLabel.stringValue = "\(comm.rawValue) market unavailable"
+        }
+        else {
+            unavailableMarketLabel.stringValue = ""
+        }
     }
     
     //MARK: - TableView Delegate -

@@ -1,0 +1,31 @@
+[
+    {
+        "economy" : -1,
+        "unavailable" : "lumber"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "aluminum"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "steel"
+    },
+    {
+        "economy" : -1,
+        "unavailable" : "plastic"
+    },
+    {
+        "economy" : 1,
+        "unavailable" : "timber"
+    },
+    {
+        "economy" : 1,
+        "unavailable" : "iron ore"
+    },
+    {
+        "economy" : 1,
+        "unavailable" : "bauxite"
+    }
+
+]

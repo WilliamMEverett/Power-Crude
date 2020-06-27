@@ -120,6 +120,9 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         adjustedMarkets = [:]
         
         currentCom.forEach { (key: Commodity, value: Int) in
+            if key == gameState?.unavailableCommodity {
+                return
+            }
             var m = gameState!.commodityMarket[key]!
             let amountSold = min(m.prices.count - m.qty, value)
             m.qty += amountSold
@@ -136,6 +139,9 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         adjustedMarkets = [:]
         var adjustments = required
         gameState!.players[currentPlayer]!.commodities.forEach { (entry) in
+            if entry.key == gameState!.unavailableCommodity {
+                return
+            }
             let existing = entry.value
             let newValue = (adjustments[entry.key] ?? 0) - existing
             adjustments[entry.key] = newValue
@@ -143,6 +149,9 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         var startingMoney = gameState!.players[currentPlayer]!.money
         
         adjustments.filter({ $0.value < 0 }).forEach({ (entry) in
+            if entry.key == gameState!.unavailableCommodity {
+                return
+            }
             var m = gameState!.commodityMarket[entry.key]!
             let amountSold = min(m.prices.count - m.qty, -1*entry.value)
             startingMoney -= m.totalPriceForBuying(qtyBought: -1*amountSold)!
@@ -151,6 +160,9 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         })
         
         adjustments.filter({ $0.value > 0 }).forEach({ (entry) in
+            if entry.key == gameState!.unavailableCommodity {
+                return
+            }
             var m = gameState!.commodityMarket[entry.key]!
             if let p = m.totalPriceForBuying(qtyBought: entry.value), p <= startingMoney {
                 startingMoney -= p
@@ -202,6 +214,7 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
 
         if (indexPath.item < commodityArray.count) {
             let com = commodityArray[indexPath.item]
+            cell.enabled = gameState?.unavailableCommodity != com
             cell.market = (adjustedMarkets[com] ?? gameState?.commodityMarket[com])
             cell.currentPlayerQty = (gameState?.players[currentPlayer]?.commodities[com] ?? 0)
             cell.currentMarketQty = (gameState?.commodityMarket[com]?.qty ?? 0)

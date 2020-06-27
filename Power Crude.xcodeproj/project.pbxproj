@@ -27,6 +27,8 @@
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
 		D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */; };
+		D9A132AE24A6D666006CAFC2 /* Event_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A132AD24A6D666006CAFC2 /* Event_Tests.swift */; };
+		D9A132B024A6E229006CAFC2 /* events_test.json in Resources */ = {isa = PBXBuildFile; fileRef = D9A132AF24A6E229006CAFC2 /* events_test.json */; };
 		D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */; };
 		D9BCA01423E3D7F200E4F6EE /* Economy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BCA01323E3D7F200E4F6EE /* Economy.swift */; };
 		D9BCA01623E3DC5400E4F6EE /* economies.json in Resources */ = {isa = PBXBuildFile; fileRef = D9BCA01523E3DC5400E4F6EE /* economies.json */; };
@@ -87,6 +89,8 @@
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
 		D987D4F723C424F300436137 /* AssetCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCollectionViewItem.xib; sourceTree = "<group>"; };
+		D9A132AD24A6D666006CAFC2 /* Event_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_Tests.swift; sourceTree = "<group>"; };
+		D9A132AF24A6E229006CAFC2 /* events_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = events_test.json; path = "Power Crude/events_test.json"; sourceTree = SOURCE_ROOT; };
 		D9A2E9E123D674DE00793DCD /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		D9BCA01323E3D7F200E4F6EE /* Economy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Economy.swift; sourceTree = "<group>"; };
 		D9BCA01523E3DC5400E4F6EE /* economies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = economies.json; path = "Power Crude/economies.json"; sourceTree = SOURCE_ROOT; };
@@ -211,6 +215,7 @@
 			children = (
 				D9F716EC23C2D12700442437 /* Power_CrudeTests.swift */,
 				D9650E7E23DA8A8B00355628 /* Player_Tests.swift */,
+				D9A132AD24A6D666006CAFC2 /* Event_Tests.swift */,
 				D9F716EE23C2D12700442437 /* Info.plist */,
 			);
 			path = "Power CrudeTests";
@@ -245,6 +250,7 @@
 				D9F7170D23C2D2CE00442437 /* Assets.json */,
 				D961D5D023CAC1E6005A7B4C /* markets.json */,
 				D94427F423E12D9E00C1E51D /* events.json */,
+				D9A132AF24A6E229006CAFC2 /* events_test.json */,
 				D9BCA01523E3DC5400E4F6EE /* economies.json */,
 			);
 			path = Resources;
@@ -357,6 +363,7 @@
 				D9294F0823C96E77000E3486 /* InformationSidebarViewController.xib in Resources */,
 				D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */,
 				D9F7170E23C2D2CE00442437 /* Assets.json in Resources */,
+				D9A132B024A6E229006CAFC2 /* events_test.json in Resources */,
 				D961D5D123CAC1E6005A7B4C /* markets.json in Resources */,
 				D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */,
 				D94427F923E1306400C1E51D /* EventViewController.xib in Resources */,
@@ -423,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9650E7F23DA8A8B00355628 /* Player_Tests.swift in Sources */,
+				D9A132AE24A6D666006CAFC2 /* Event_Tests.swift in Sources */,
 				D9F716ED23C2D12700442437 /* Power_CrudeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

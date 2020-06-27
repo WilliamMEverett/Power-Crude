@@ -18,6 +18,7 @@ struct Market {
     var type : Commodity = .timber
     var qty : Int = 0
     var prices : [Int] = []
+    var unavailable = false
     
     init( dataIn : [String:Any], typeName : String) throws {
         

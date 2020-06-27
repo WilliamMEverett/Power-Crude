@@ -26,6 +26,7 @@ class GameState: NSObject {
     var phase : GameStatePhase = .Auction
     
     var commodityMarket : [Commodity:Market]!
+    var unavailableCommodity : Commodity?
     var eventDeck : [Event]!
     var discardedEventDeck : [Event]!
     
@@ -45,6 +46,7 @@ class GameState: NSObject {
         
         var assets = try loadAssets()
         commodityMarket = try loadMarkets()
+        unavailableCommodity = nil
         eventDeck = try loadEvents()
         eventDeck.shuffle()
         discardedEventDeck = []
@@ -183,6 +185,7 @@ class GameState: NSObject {
             }
         }
         else if phase == .Market {
+            unavailableCommodity = nil
             phase = .Events
         }
         else if phase == .Events {
@@ -215,6 +218,10 @@ class GameState: NSObject {
             let newQty = max(min(mk.qty + ev.marketChange.qty, mk.prices.count),0)
             mk.qty = newQty
             commodityMarket[ev.marketChange.type] = mk
+        }
+        
+        if ev.marketUnavailable != nil {
+            unavailableCommodity = ev.marketUnavailable
         }
         
         let oldLevel = economyLevel

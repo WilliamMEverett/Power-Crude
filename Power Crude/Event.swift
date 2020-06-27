@@ -13,6 +13,7 @@ struct Event : CustomStringConvertible, Equatable {
 
     var economyChange : Int
     var marketChange : CommodityQty
+    var marketUnavailable : Commodity?
     
     var description: String {
         let eD = self.economyDescription
@@ -41,6 +42,9 @@ struct Event : CustomStringConvertible, Equatable {
             let qtyDesc = marketChange.qty > 0 ? "+\(marketChange.qty)" : "\(marketChange.qty)"
             return "\(marketChange.type.rawValue) \(qtyDesc)"
         }
+        else if marketUnavailable != nil {
+            return "\(marketUnavailable!.rawValue) market unavailable next turn."
+        }
         else {
             return ""
         }
@@ -56,6 +60,14 @@ struct Event : CustomStringConvertible, Equatable {
         else {
             marketChange = CommodityQty(type: .timber, qty: 0)
         }
+        
+        if let unavailableString = dataIn["unavailable"] as? String {
+            marketUnavailable = Commodity.allCases.first(where: {$0.rawValue.lowercased() == unavailableString.lowercased()})
+        }
+        else {
+            marketUnavailable = nil
+        }
+    
     }
         
 }
