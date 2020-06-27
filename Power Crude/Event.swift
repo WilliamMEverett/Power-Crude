@@ -14,6 +14,7 @@ struct Event : CustomStringConvertible, Equatable {
     var economyChange : Int
     var marketChange : CommodityQty
     var marketUnavailable : Commodity?
+    var changeEffect : EconomyChangeDescription?
     
     var description: String {
         let eD = self.economyDescription
@@ -45,6 +46,9 @@ struct Event : CustomStringConvertible, Equatable {
         else if marketUnavailable != nil {
             return "\(marketUnavailable!.rawValue) market unavailable next turn."
         }
+        else if changeEffect != nil {
+            return "\(changeEffect!.description)"
+        }
         else {
             return ""
         }
@@ -66,6 +70,13 @@ struct Event : CustomStringConvertible, Equatable {
         }
         else {
             marketUnavailable = nil
+        }
+        
+        if let changeDes = dataIn["change"] as? [String:Any] {
+            changeEffect = try? EconomyChangeDescription(dataIn: changeDes)
+        }
+        else {
+            changeEffect = nil
         }
     
     }

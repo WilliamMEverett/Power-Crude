@@ -224,6 +224,10 @@ class GameState: NSObject {
             unavailableCommodity = ev.marketUnavailable
         }
         
+        if ev.changeEffect != nil {
+            applyChangeEffect(ev.changeEffect!)
+        }
+        
         let oldLevel = economyLevel
         economyLevel = nextEconomyLevelWithChange(ev.economyChange)
         if oldLevel != economyLevel {

@@ -264,6 +264,17 @@
         }
     },
     {
+        "economy" : 1,
+        "change" : {
+            "goods" : 2,
+        }
+    },
+    {
+        "change" : {
+            "goods" : -2,
+        }
+    },
+    {
         "economy" : -1,
         "unavailable" : "lumber"
     },

@@ -13,6 +13,18 @@ struct EconomyChangeDescription : Equatable {
     var refined : Int
     var goods : Int
     
+    init() {
+        raw = 0
+        refined = 0
+        goods = 0
+    }
+    
+    init(dataIn: [String:Any]) throws {
+        raw = (dataIn["raw"] as? Int) ?? 0
+        refined = (dataIn["refined"] as? Int) ?? 0
+        goods = (dataIn["goods"] as? Int) ?? 0
+    }
+    
     var isEmpty : Bool {
         raw == 0 && refined == 0 && goods == 0
     }
@@ -49,8 +61,8 @@ struct Economy : Equatable {
     
     var level : Int = 0
     var energyPrice : Int = 8
-    var changeEffect : EconomyChangeDescription = EconomyChangeDescription(raw:0,refined:0,goods:0)
-    var steadyEffect : EconomyChangeDescription = EconomyChangeDescription(raw:0,refined:0,goods:0)
+    var changeEffect : EconomyChangeDescription = EconomyChangeDescription()
+    var steadyEffect : EconomyChangeDescription = EconomyChangeDescription()
     
     init(dataIn: [String:Any], level : Int) throws {
         self.level = level
@@ -60,16 +72,10 @@ struct Economy : Equatable {
         self.energyPrice = ene
         
         if let change = dataIn["change"] as? [String:Any] {
-            let r = (change["raw"] as? Int) ?? 0
-            let rf = (change["refined"] as? Int) ?? 0
-            let g = (change["goods"] as? Int) ?? 0
-            self.changeEffect = EconomyChangeDescription(raw:r,refined:rf,goods:g)
+            self.changeEffect = try EconomyChangeDescription(dataIn: change)
         }
         if let change = dataIn["steady"] as? [String:Any] {
-            let r = (change["raw"] as? Int) ?? 0
-            let rf = (change["refined"] as? Int) ?? 0
-            let g = (change["goods"] as? Int) ?? 0
-            self.steadyEffect = EconomyChangeDescription(raw:r,refined:rf,goods:g)
+            self.steadyEffect = try EconomyChangeDescription(dataIn: change)
         }
     }
     

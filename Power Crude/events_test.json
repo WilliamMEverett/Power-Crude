@@ -1,31 +1,47 @@
 [
     {
-        "economy" : -1,
-        "unavailable" : "lumber"
+        "economy" : 1,
+        "change" : {
+            "goods" : 2,
+        }
     },
     {
-        "economy" : -1,
-        "unavailable" : "aluminum"
-    },
-    {
-        "economy" : -1,
-        "unavailable" : "steel"
-    },
-    {
-        "economy" : -1,
-        "unavailable" : "plastic"
+        "change" : {
+            "goods" : -2,
+        }
     },
     {
         "economy" : 1,
-        "unavailable" : "timber"
+        "change" : {
+            "goods" : 3,
+        }
+    },
+    {
+        "change" : {
+            "goods" : -1,
+        }
     },
     {
         "economy" : 1,
-        "unavailable" : "iron ore"
+        "change" : {
+            "goods" : 1,
+        }
+    },
+    {
+        "change" : {
+            "goods" : -4,
+        }
     },
     {
         "economy" : 1,
-        "unavailable" : "bauxite"
-    }
+        "change" : {
+            "goods" : 5,
+        }
+    },
+    {
+        "change" : {
+            "goods" : -1,
+        }
+    },
 
 ]
