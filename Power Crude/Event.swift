@@ -8,6 +8,69 @@
 
 import Foundation
 
+struct TaxEvent : CustomStringConvertible, Equatable {
+    
+    var type : String
+    var assetType : AssetType?
+    var outputType : Commodity?
+    var amount : Int
+    
+    init(_ dataIn : [String:Any]) throws {
+        if let typeString = dataIn["type"] as? String {
+            type = typeString.lowercased()
+        }
+        else {
+            throw NSError(domain: "Tax event missing type", code: 1, userInfo: nil)
+        }
+        assetType = nil
+        outputType = nil
+        if type == "commodity" {
+        }
+        else if type == "assettype" {
+            if let typeString = dataIn["category"] as? String {
+                assetType = AssetType.allCases.first(where: {String(describing:$0).lowercased() == typeString.lowercased()})
+            }
+            if assetType == nil {
+                throw NSError(domain: "Tax event does not have valid asset type", code: 1, userInfo: nil)
+            }
+        }
+        else if type == "outputtype" {
+            if let typeString = dataIn["category"] as? String {
+                outputType = Commodity.allCases.first(where: {$0.rawValue.lowercased() == typeString.lowercased()})
+            }
+            if outputType == nil {
+                throw NSError(domain: "Tax event does not have valid output type", code: 1, userInfo: nil)
+            }
+        }
+        else {
+            throw NSError(domain: "Tax event does not have valid type", code: 1, userInfo: nil)
+        }
+        
+        if let amountInt = dataIn["amount"] as? Int {
+            amount = amountInt
+        }
+        else {
+            throw NSError(domain: "Tax event does not have amount", code: 1, userInfo: nil)
+        }
+    }
+    
+    var description: String {
+        let signString = amount < 0 ? "-" : ""
+        let dollarString = "\(signString)$\(abs(amount))"
+        if type == "commodity" {
+            return "\(dollarString) for each commodity stored"
+        }
+        else if assetType != nil {
+            return "\(dollarString) for each \(assetType!) asset"
+        }
+        else if outputType != nil {
+            return "\(dollarString) for each \(outputType!) producing asset"
+        }
+        else {
+            return ""
+        }
+    }
+}
 
 struct Event : CustomStringConvertible, Equatable {
 
@@ -15,6 +78,7 @@ struct Event : CustomStringConvertible, Equatable {
     var marketChange : CommodityQty
     var marketUnavailable : Commodity?
     var changeEffect : EconomyChangeDescription?
+    var taxEvent : TaxEvent?
     
     var description: String {
         let eD = self.economyDescription
@@ -49,6 +113,9 @@ struct Event : CustomStringConvertible, Equatable {
         else if changeEffect != nil {
             return "\(changeEffect!.description)"
         }
+        else if taxEvent != nil {
+            return taxEvent!.description
+        }
         else {
             return ""
         }
@@ -73,10 +140,17 @@ struct Event : CustomStringConvertible, Equatable {
         }
         
         if let changeDes = dataIn["change"] as? [String:Any] {
-            changeEffect = try? EconomyChangeDescription(dataIn: changeDes)
+            changeEffect = try EconomyChangeDescription(dataIn: changeDes)
         }
         else {
             changeEffect = nil
+        }
+        
+        if let taxDict = dataIn["taxevent"] as? [String:Any] {
+            taxEvent = try TaxEvent(taxDict)
+        }
+        else {
+            taxEvent = nil
         }
     
     }

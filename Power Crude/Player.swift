@@ -213,4 +213,29 @@ class Player: NSObject {
         
         return res
     }
+    
+    func applyTaxEvent(_ ev : TaxEvent) {
+        
+        if ev.type == "commodity" {
+            let totalCommodities = commodities.values.reduce(0) { (res, val) -> Int in
+                return res + val
+            }
+            let moneyChange = ev.amount*totalCommodities
+            money += moneyChange
+        }
+        else if ev.assetType != nil {
+            let filtered = assets.filter { $0.type == ev.assetType! }
+            let moneyChange = ev.amount*filtered.count
+            money += moneyChange
+        }
+        else if ev.outputType != nil {
+            let filtered = assets.filter { $0.output.type == ev.outputType! }
+            let moneyChange = ev.amount*filtered.count
+            money += moneyChange
+        }
+        
+        if money < 0 {
+            money = 0
+        }
+    }
 }

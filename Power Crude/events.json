@@ -289,6 +289,66 @@
     {
         "economy" : -1,
         "unavailable" : "plastic"
+    },
+    {
+        "economy" : 1,
+        "taxevent" : {
+            "type" : "outputtype",
+            "category" : "lumber",
+            "amount" : 10
+        }
+    },
+    {
+        "economy" : 1,
+        "taxevent" : {
+            "type" : "outputtype",
+            "category" : "steel",
+            "amount" : 10
+        }
+    },
+    {
+        "economy" : 1,
+        "taxevent" : {
+            "type" : "outputtype",
+            "category" : "aluminum",
+            "amount" : 10
+        }
+    },
+    {
+        "economy" : 1,
+        "taxevent" : {
+            "type" : "outputtype",
+            "category" : "plastic",
+            "amount" : 10
+        }
+    },
+    {
+        "economy" : -2,
+        "taxevent" : {
+            "type" : "commodity",
+            "amount" : -1
+        }
+    },
+    {
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "production",
+            "amount" : 10
+        }
+    },
+    {
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "refining",
+            "amount" : -10
+        }
+    },
+    {
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "manufacturing",
+            "amount" : -15
+        }
     }
 
 ]

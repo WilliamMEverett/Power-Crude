@@ -228,6 +228,10 @@ class GameState: NSObject {
             applyChangeEffect(ev.changeEffect!)
         }
         
+        if ev.taxEvent != nil {
+            applyTaxEvent(ev.taxEvent!)
+        }
+        
         let oldLevel = economyLevel
         economyLevel = nextEconomyLevelWithChange(ev.economyChange)
         if oldLevel != economyLevel {
@@ -269,6 +273,12 @@ class GameState: NSObject {
                 let newQ = min(max(commodityMarket[c]!.qty + changeEffect.refined, 0), commodityMarket[c]!.prices.count)
                 commodityMarket[c]!.qty = newQ
             }
+        }
+    }
+    
+    fileprivate func applyTaxEvent(_ ev : TaxEvent) {
+        players.values.forEach { (player) in
+            player.applyTaxEvent(ev)
         }
     }
     

@@ -1,47 +1,23 @@
 [
     {
-        "economy" : 1,
-        "change" : {
-            "goods" : 2,
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "production",
+            "amount" : 10
         }
     },
     {
-        "change" : {
-            "goods" : -2,
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "refining",
+            "amount" : -10
         }
     },
     {
-        "economy" : 1,
-        "change" : {
-            "goods" : 3,
+        "taxevent" : {
+            "type" : "assettype",
+            "category" : "manufacturing",
+            "amount" : -15
         }
-    },
-    {
-        "change" : {
-            "goods" : -1,
-        }
-    },
-    {
-        "economy" : 1,
-        "change" : {
-            "goods" : 1,
-        }
-    },
-    {
-        "change" : {
-            "goods" : -4,
-        }
-    },
-    {
-        "economy" : 1,
-        "change" : {
-            "goods" : 5,
-        }
-    },
-    {
-        "change" : {
-            "goods" : -1,
-        }
-    },
-
+    }
 ]

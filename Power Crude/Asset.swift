@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum AssetType : Comparable {
+enum AssetType : Comparable, CaseIterable {
     static func < (lhs: AssetType, rhs: AssetType) -> Bool {
         if lhs != rhs {
             if lhs == production {
