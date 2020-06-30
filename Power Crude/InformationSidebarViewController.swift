@@ -57,7 +57,7 @@ class InformationSidebarViewController: NSViewController {
             
             let titleFont = NSFont(name: "Times New Roman", size: 20)
             
-            displayString.append(NSAttributedString(string: "Player \(player.playerNumber)\n", attributes: [.font:titleFont!]))
+            displayString.append(NSAttributedString(string: "Player \(player.playerNumber) \(player.playerName)\n", attributes: [.font:titleFont!]))
             displayString.append(NSAttributedString(string: "[\(player.totalAssetValue)]   $\(player.money)\n\n", attributes: [.font: NSFont.systemFont(ofSize: 16)]))
             player.assets.forEach( {
                 displayString.append(NSAttributedString(string: "\($0.description)\n", attributes:  [.font: NSFont(name: "Helvetica", size: 12)!]))

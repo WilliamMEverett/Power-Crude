@@ -23,6 +23,8 @@
 		D966549A23D37712002E9C20 /* AssetSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D966549823D37712002E9C20 /* AssetSelectionViewController.xib */; };
 		D966549D23D3B5C2002E9C20 /* InformationBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */; };
 		D966549E23D3B5C2002E9C20 /* InformationBottomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */; };
+		D986765924AAB14D00A6B981 /* GameStartConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D986765724AAB14D00A6B981 /* GameStartConfigureViewController.swift */; };
+		D986765A24AAB14D00A6B981 /* GameStartConfigureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D986765824AAB14D00A6B981 /* GameStartConfigureViewController.xib */; };
 		D987D4F323C4219900436137 /* AuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F123C4219900436137 /* AuctionViewController.swift */; };
 		D987D4F423C4219900436137 /* AuctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D987D4F223C4219900436137 /* AuctionViewController.xib */; };
 		D987D4F823C424F300436137 /* AssetCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */; };
@@ -85,6 +87,8 @@
 		D966549823D37712002E9C20 /* AssetSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetSelectionViewController.xib; sourceTree = "<group>"; };
 		D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBottomViewController.swift; sourceTree = "<group>"; };
 		D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationBottomViewController.xib; sourceTree = "<group>"; };
+		D986765724AAB14D00A6B981 /* GameStartConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartConfigureViewController.swift; sourceTree = "<group>"; };
+		D986765824AAB14D00A6B981 /* GameStartConfigureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameStartConfigureViewController.xib; sourceTree = "<group>"; };
 		D987D4F123C4219900436137 /* AuctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewController.swift; sourceTree = "<group>"; };
 		D987D4F223C4219900436137 /* AuctionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuctionViewController.xib; sourceTree = "<group>"; };
 		D987D4F623C424F300436137 /* AssetCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				D9294F0623C96E77000E3486 /* InformationSidebarViewController.xib */,
 				D966549B23D3B5C2002E9C20 /* InformationBottomViewController.swift */,
 				D966549C23D3B5C2002E9C20 /* InformationBottomViewController.xib */,
+				D986765724AAB14D00A6B981 /* GameStartConfigureViewController.swift */,
+				D986765824AAB14D00A6B981 /* GameStartConfigureViewController.xib */,
 				D966549723D37712002E9C20 /* AssetSelectionViewController.swift */,
 				D966549823D37712002E9C20 /* AssetSelectionViewController.xib */,
 				D9F716DD23C2D12700442437 /* Assets.xcassets */,
@@ -368,6 +374,7 @@
 				D9F3596C23CBCA19008D2C7A /* MarketViewController.xib in Resources */,
 				D94427F923E1306400C1E51D /* EventViewController.xib in Resources */,
 				D9F3597023CBCCAD008D2C7A /* CommodityMarketViewItem.xib in Resources */,
+				D986765A24AAB14D00A6B981 /* GameStartConfigureViewController.xib in Resources */,
 				D987D4F923C424F300436137 /* AssetCollectionViewItem.xib in Resources */,
 				D94427F523E12D9E00C1E51D /* events.json in Resources */,
 				D9C88DD423F0DEAE0081B423 /* FinishViewController.xib in Resources */,
@@ -407,6 +414,7 @@
 				D9A2E9E223D674DE00793DCD /* ErrorHandling.swift in Sources */,
 				D966549923D37712002E9C20 /* AssetSelectionViewController.swift in Sources */,
 				D94427F823E1306400C1E51D /* EventViewController.swift in Sources */,
+				D986765924AAB14D00A6B981 /* GameStartConfigureViewController.swift in Sources */,
 				D9F7170A23C2D26700442437 /* Commodities.swift in Sources */,
 				D9F3596B23CBCA19008D2C7A /* MarketViewController.swift in Sources */,
 				D9F3596F23CBCCAD008D2C7A /* CommodityMarketViewItem.swift in Sources */,

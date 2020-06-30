@@ -10,6 +10,7 @@ import Cocoa
 
 class Player: NSObject {
 
+    var playerName : String = ""
     var playerNumber : Int = 0
     var money : Int = 0
     var assets : [Asset] = []
@@ -29,9 +30,10 @@ class Player: NSObject {
         return assets.filter({$0.type == .manufacturing }).count
     }
     
-    init(number : Int, startingCommodities : [Commodity:Int]? = nil ) {
+    init(number : Int, startingCommodities : [Commodity:Int]? = nil, name: String ) {
         super.init()
         
+        playerName = name
         playerNumber = number
         money = 30
         assets = []

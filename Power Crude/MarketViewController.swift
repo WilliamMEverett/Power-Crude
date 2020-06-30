@@ -56,7 +56,7 @@ class MarketViewController: PhaseViewController, NSCollectionViewDelegate, NSCol
         remainingMoney = gameState!.players[currentPlayer]!.money
         adjustedMarkets = [:]
         
-        playerLabel.stringValue = "Player \(currentPlayer)"
+        playerLabel.stringValue = "Player \(currentPlayer) \(gameState!.players[currentPlayer]!.playerName)"
         
         configureAuto()
     }

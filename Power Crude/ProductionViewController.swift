@@ -49,7 +49,7 @@ class ProductionViewController: PhaseViewController, NSCollectionViewDelegate, N
             }
         }
         
-        playerLabel.stringValue = "Player \(currentPlayer), select which assets will produce."
+        playerLabel.stringValue = "Player \(currentPlayer) \(gameState!.players[currentPlayer]!.playerName), select which assets will produce."
         collectionView.reloadData()
         
         selectableIndices = Set(gameState!.players[currentPlayer]!.assetsThatCanProduce(energyPrice: gameState!.currentRetailPriceEnergy).map({

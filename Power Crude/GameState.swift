@@ -41,7 +41,7 @@ class GameState: NSObject {
     
     var lowestAssetInMarket : Asset? = nil
     
-    init(numberOfPlayers : Int) throws {
+    init(numberOfPlayers : Int, playerNames : [String]?) throws {
         super.init()
         
         var assets = try loadAssets()
@@ -75,8 +75,14 @@ class GameState: NSObject {
         })
         
         players = playerOrder.reduce(into: [Int:Player](), {
-            $0[$1] = Player(number:$1, startingCommodities: startingCommodities)
+            var name = ""
+            if playerNames != nil && playerNames!.count >= $1 {
+                name = playerNames![$1 - 1]
+            }
+            $0[$1] = Player(number:$1, startingCommodities: startingCommodities, name: name)
         })
+        
+        playerOrder.shuffle()
         
         economies = try loadEconomies()
         economyLevel = 0

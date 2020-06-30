@@ -30,7 +30,7 @@ class FinishViewController: PhaseViewController {
         }
         
         let playerStringArray = sortedPlayers.map { (p) -> String in
-            "Player \(p.playerNumber): Produced \(p.lastGoodsProduced) Goods, Total Asset Value \(p.totalAssetValue)"
+            "Player \(p.playerNumber) \(p.playerName): Produced \(p.lastGoodsProduced) Goods, Total Asset Value \(p.totalAssetValue)"
         }
         resultsLabel.stringValue = playerStringArray.joined(separator: "\n\n")
     }

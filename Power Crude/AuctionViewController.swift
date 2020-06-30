@@ -127,7 +127,7 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             
             sellButton.isEnabled = currentPlayer.assets.count > 0
             
-            messageTextField.stringValue = "Player \(currentPlayerIndex), select an asset to buy, pass, or sell an asset."
+            messageTextField.stringValue = "Player \(currentPlayerIndex) \(currentPlayer.playerName), select an asset to buy, pass, or sell an asset."
             remainingBiddingTextField.isHidden = true
             
         }
@@ -163,10 +163,10 @@ class AuctionViewController: PhaseViewController, NSCollectionViewDataSource, NS
             passButton.isEnabled = true
             
             if highestCurrentBid == nil {
-                messageTextField.stringValue = "Player \(biddingPlayerIndex), bid or cancel."
+                messageTextField.stringValue = "Player \(biddingPlayerIndex) \(gameState!.players[biddingPlayerIndex]!.playerName), bid or cancel."
             }
             else {
-                messageTextField.stringValue = "Player \(biddingPlayerIndex), bid or pass."
+                messageTextField.stringValue = "Player \(biddingPlayerIndex) \(gameState!.players[biddingPlayerIndex]!.playerName), bid or pass."
             }
             
         }

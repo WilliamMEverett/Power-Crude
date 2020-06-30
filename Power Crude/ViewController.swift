@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController, PhaseViewControllerDelegate {
+class ViewController: NSViewController, PhaseViewControllerDelegate, GameStartConfigureViewControllerDelegate {
     
     @IBOutlet weak var containerView : NSView!
     @IBOutlet weak var sidebarContainerView : NSView!
@@ -19,33 +19,53 @@ class ViewController: NSViewController, PhaseViewControllerDelegate {
     
     var currentPhaseViewController : PhaseViewController?
     var gameState : GameState?
+    var playerNames : [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        do {
-           gameState = try GameState(numberOfPlayers: 5)
-        }
-        catch {
-            powerCrudeHandleError(description: "Failed to initialize game state: \(error.localizedDescription)")
-        }
-        gameState!.prepareForPhase()
-        
         informationViewController = InformationSidebarViewController()
         self.addChild(informationViewController)
         informationViewController.view.frame = sidebarContainerView.bounds
         sidebarContainerView.addSubview(informationViewController.view)
-        
-        informationViewController.gameState = gameState
         
         bottomInformationViewController = InformationBottomViewController()
         self.addChild(bottomInformationViewController)
         bottomInformationViewController.view.frame = bottomContainerView.bounds
         bottomContainerView.addSubview(bottomInformationViewController.view)
 
-        bottomInformationViewController.gameState = gameState
+        displayGameStartConfiguration()
         
+        
+    }
+    
+    func displayGameStartConfiguration() {
+        
+        let configure = GameStartConfigureViewController()
+        configure.delegate = self
+        let window = NSWindow(contentViewController: configure)
+        if NSApplication.shared.runModal(for: window) == .OK {
+            createNewGameWithPlayers(playerNames)
+            window.close()
+        }
+    }
+    
+    func setPlayerNames(_ viewController: GameStartConfigureViewController, players: [String]) {
+        playerNames = players
+    }
+    
+    func createNewGameWithPlayers(_ playerNames : [String]) {
+        do {
+            gameState = try GameState(numberOfPlayers: playerNames.count, playerNames: playerNames)
+        }
+        catch {
+            powerCrudeHandleError(description: "Failed to initialize game state: \(error.localizedDescription)")
+        }
+        gameState!.prepareForPhase()
+        informationViewController.gameState = gameState
+        bottomInformationViewController.gameState = gameState
         installNewPhaseController(phaseController: AuctionViewController())
+        self.view.window?.orderFront(nil)
     }
     
     func installNewPhaseController(phaseController : PhaseViewController?) {
