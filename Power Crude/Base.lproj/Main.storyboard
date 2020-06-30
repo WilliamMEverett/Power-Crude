@@ -711,15 +711,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jom-e6-exb">
-                                <rect key="frame" x="10" y="200" width="900" height="500"/>
+                                <rect key="frame" x="10" y="200" width="800" height="500"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </containerView>
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBZ-En-2fi">
-                                <rect key="frame" x="920" y="10" width="270" height="690"/>
+                                <rect key="frame" x="820" y="10" width="370" height="690"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                             </containerView>
                             <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5Q-Lg-1y2">
-                                <rect key="frame" x="10" y="10" width="900" height="180"/>
+                                <rect key="frame" x="10" y="10" width="800" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </containerView>
                         </subviews>

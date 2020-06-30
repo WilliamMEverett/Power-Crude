@@ -50,21 +50,21 @@
                     </textFieldCell>
                 </textField>
                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qe-oc-1pL">
-                    <rect key="frame" x="605" y="0.0" width="295" height="120"/>
+                    <rect key="frame" x="555" y="0.0" width="345" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="YAd-uF-wA9">
-                        <rect key="frame" x="1" y="1" width="293" height="118"/>
+                        <rect key="frame" x="1" y="1" width="343" height="118"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="ZCT-yh-KUd">
-                                <rect key="frame" x="0.0" y="0.0" width="293" height="118"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="118"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <tableViewGridLines key="gridStyleMask" dashed="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="290" minWidth="40" maxWidth="1000" id="Ped-XF-VTu">
+                                    <tableColumn width="340" minWidth="40" maxWidth="1000" id="Ped-XF-VTu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -94,7 +94,7 @@
                     </scroller>
                 </scrollView>
                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaD-bO-g5M">
-                    <rect key="frame" x="475" y="0.0" width="130" height="120"/>
+                    <rect key="frame" x="425" y="0.0" width="130" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="k0U-9o-Grf">
                         <rect key="frame" x="1" y="1" width="128" height="118"/>
